@@ -1,35 +1,36 @@
+---
 name: Kevin Howell
 markdown: redcarpet
 pygments: true
-nav_pages: !!map
-    home: /
-    bio: /bio
-    projects: /projects
-    links: /links
+nav_pages:
+  home: "/"
+  bio: "/bio"
+  projects: "/projects"
+  links: "/links"
 tags_to_show:
-    - angularjs
-    - c
-    - c++
-    - cordova
-    - eclipse
-    - fedora
-    - fuzzer
-    - gles
-    - guice
-    - java
-    - maven
-    - mobile
-    - opengl
-    - physicsfs
-    - pouchdb
-    - project
-    - python
-    - python 3
-    - recipe
-    - refactoring
-    - rpm
-    - thunderbird
-    - tips
-    - xml
-    - xpcom
-    - xsd
+- angularjs
+- c
+- c++
+- cordova
+- eclipse
+- fedora
+- fuzzer
+- gles
+- guice
+- java
+- maven
+- mobile
+- opengl
+- physicsfs
+- pouchdb
+- project
+- python
+- python 3
+- recipe
+- refactoring
+- rpm
+- thunderbird
+- tips
+- xml
+- xpcom
+- xsd
