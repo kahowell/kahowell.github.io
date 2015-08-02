@@ -6,4 +6,35 @@ nav_pages: !!map
     bio: /bio
     projects: /projects
     links: /links
-tags_to_show: [c, c++, eclipse, fedora, firefox, firefox-sync, fuzzer, git, gles, guice, heroku, java, maven, opengl, physicsfs, projects, python, python 3, refactoring, rpm, thunderbird, tips, xml, xpcom, xsd]
+tags_to_show:
+    - angularjs
+    - c
+    - c++
+    - cordova
+    - eclipse
+    - fedora
+    - firefox
+    - firefox-sync
+    - firefox-sync
+    - fuzzer
+    - git
+    - gles
+    - guice
+    - heroku
+    - java
+    - maven
+    - mobile
+    - opengl
+    - physicsfs
+    - pouchdb
+    - project
+    - python
+    - python 3
+    - recipe
+    - refactoring
+    - rpm
+    - thunderbird
+    - tips
+    - xml
+    - xpcom
+    - xsd
