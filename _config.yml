@@ -1,11 +1,12 @@
 ---
 name: Kevin Howell
 markdown: redcarpet
-pygments: true
+highlighter: rouge
 nav_pages:
   home: "/"
   bio: "/bio"
   projects: "/projects"
+  presentations: "/presentations"
   links: "/links"
 tags_to_show:
 - angularjs
