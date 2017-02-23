@@ -1,0 +1,3 @@
+[submodule "presentations/2017-02-23_python-for-android/reveal.js"]
+    path = presentations/2017-02-23_python-for-android/reveal.js
+    url = https://github.com/hakimel/reveal.js/
