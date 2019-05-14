@@ -1,3 +1,6 @@
 [submodule "presentations/2017-02-23_python-for-android/reveal.js"]
     path = presentations/2017-02-23_python-for-android/reveal.js
     url = https://github.com/hakimel/reveal.js/
+[submodule "presentations/2019-06-16_jenkins_101/reveal.js"]
+	path = presentations/2019-06-16_jenkins_101/reveal.js
+	url = https://github.com/hakimel/reveal.js
