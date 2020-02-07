@@ -5,93 +5,101 @@ pyodide_packages = [
 
 pyodideapp_www_files = [
     
-    './fetchimport.py',
-    
-    './sw.js',
+    './index.html',
     
     './httpimport.py',
     
-    './bootstrap.js',
-    
-    './packages.json',
-    
-    './pyodide.asm.js',
-    
     './pyodide.asm.data',
     
-    './pyodide.asm.data.js',
+    './sw.js',
     
-    './pyodide.asm.wasm',
+    './1F373.svg',
     
-    './pyodide.js',
+    './vue.cpython-37.pyc',
     
-    './all_foods.json',
+    './store.py',
     
-    './pouchdb.find.min.js',
-    
-    './pouchdb.min.js',
-    
-    './onsenui.min.css',
-    
-    './onsen-css-components.min.css',
-    
-    './onsenui.min.js',
-    
-    './vue-onsenui.min.js',
-    
-    './vue.min.js',
-    
-    './1F373_192.png',
+    './recommendations.py',
     
     './1F373_512.png',
     
-    './1F373.svg',
+    './1F373_192.png',
+    
+    './config.py',
+    
+    './1F957.svg',
+    
+    './pyodide_config.js',
+    
+    './vue.min.js',
+    
+    './pyodide.asm.wasm',
+    
+    './main.py',
+    
+    './onsenui.min.js',
+    
+    './nutrition.webmanifest',
+    
+    './pouchdb.find.min.js',
+    
+    './onsen-css-components.min.css',
+    
+    './recipe.py',
     
     './1F336.svg',
     
     './1F34A.svg',
     
-    './1F957.svg',
-    
-    './groceries.py',
+    './vue.py',
     
     './plan.py',
     
-    './vue.py',
+    './pyodide.asm.data.js',
     
-    './recipe.py',
+    './vue-onsenui.min.js',
     
-    './nutrition.webmanifest',
+    './all_foods.json',
     
-    './main.py',
+    './pyodide.asm.js',
     
-    './recommendations.py',
+    './packages.json',
     
-    './store.py',
+    './1F373.png',
     
-    './index.html',
+    './bootstrap.js',
     
-    './font_awesome/webfonts/fa-solid-900.ttf',
+    './fetchimport.py',
     
-    './font_awesome/webfonts/fa-solid-900.woff',
+    './pyodide.js',
     
-    './font_awesome/webfonts/fa-solid-900.woff2',
+    './pouchdb.min.js',
     
-    './font_awesome/webfonts/fa-brands-400.woff',
+    './groceries.py',
     
-    './font_awesome/webfonts/fa-brands-400.woff2',
+    './onsenui.min.css',
     
-    './font_awesome/css/v4-shims.min.css',
-    
-    './font_awesome/css/all.min.css',
-    
-    './material-design-iconic-font/fonts/Material-Design-Iconic-Font.ttf',
+    './material-design-iconic-font/css/material-design-iconic-font.min.css',
     
     './material-design-iconic-font/fonts/Material-Design-Iconic-Font.woff2',
     
     './material-design-iconic-font/fonts/Material-Design-Iconic-Font.woff',
     
-    './material-design-iconic-font/css/material-design-iconic-font.min.css',
+    './material-design-iconic-font/fonts/Material-Design-Iconic-Font.ttf',
+    
+    './font_awesome/webfonts/fa-solid-900.woff',
+    
+    './font_awesome/webfonts/fa-solid-900.woff2',
+    
+    './font_awesome/webfonts/fa-brands-400.woff2',
+    
+    './font_awesome/webfonts/fa-solid-900.ttf',
+    
+    './font_awesome/webfonts/fa-brands-400.woff',
+    
+    './font_awesome/css/v4-shims.min.css',
+    
+    './font_awesome/css/all.min.css',
     
     './ionicons/css/ionicons.min.css',
     
