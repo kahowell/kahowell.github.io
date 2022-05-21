@@ -6,11 +6,11 @@ layout: default
 <div class="post">
 {{ content }}
 </div>
-<div class="tags panel panel-primary">
-    <div class="panel-heading">Tags for this post</div>
-    <div class="panel-body">
+<div class="card">
+    <div class="card-header"><h6>Tags</h6></div>
+    <div class="card-body">
         {% for tag in page.tags %}
-            <a href="/tags/#{{ tag | replace: " ", "-" }}"><span class="label label-primary">{{ tag }}</span></a>
+            <a href="/tags/#{{ tag | replace: " ", "-" }}"><span class="badge bg-primary">{{ tag }}</span></a>
         {% endfor %}
     </div>
 </div>

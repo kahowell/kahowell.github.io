@@ -3,16 +3,10 @@ title: bio
 layout: default
 active: bio
 ---
-#bio
-I grew up in a small town in Southwest Virginia. I attended the
-[College of William of Mary][wm.edu] in Williamsburg, VA, and earned a
-Bachelor’s degree in Computer Science. After I graduated, I moved to Northern
-Virginia for a job as a technical consultant (developer). I am currently
-located in the Raleigh-Durham area in North Carolina.
+# bio
 
-[wm.edu]: http://wm.edu
+<img class="rounded-circle float-end w-25 my-3" src="https://www.gravatar.com/avatar/0a1cca744d3e02c9e927cdb74210716c.png?size=512" alt="Kevin's Gravatar" />
 
-I am a big advocate of free and open source software, because I believe
-software efforts should benefit the greater good — and not just individual
-persons or companies. I believe open source is the smarter way to build
-software.
+Kevin is a Principal Software Engineer at Red Hat in Raleigh, NC, currently focused on building subscription functionality for console.redhat.com using Java, Quarkus, Spring Boot, OpenShift, and Kafka. He holds a Bachelor's in Computer Science from the [College of William and Mary](https://wm.edu), and is a [Red Hat Certified Professional](https://rhtapps.redhat.com/verify/?certId=150-059-160).
+
+Kevin is passionate about free and open source software.

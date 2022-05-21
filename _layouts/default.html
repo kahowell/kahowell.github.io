@@ -1,83 +1,53 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Kevin Howell : {{ page.title }}</title>
-        <link rel="stylesheet" href="/css/syntax.css" />
-        <link rel="stylesheet" href="/css/bootstrap.min.css" />
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="/js/html5shiv.js"></script>
-          <script src="/js/response.min.js"></script>
-        <![endif]-->
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/syntax.css">
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
-        <nav class="navbar navbar-default" role="navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/"><strong>{{ site.name }}</strong></a>
-                </div>
-                <ul class="nav navbar-nav">
+                <a class="navbar-brand" href="/">{{ site.name }}</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     {% for item in site.nav_pages %}
-                        <li {% if page.active == item[0] %} class="active" {% endif %}>
-                            <a href="{{ item[1] }}">{{ item[0] }}</a>
+                        <li class="nav-item {% if page.active == item[0] %} active{% endif %}">
+                            <a class="nav-link" href="{{ item[1] }}">{{ item[0] }}</a>
                         </li>
                     {% endfor %}
                 </ul>
             </div>
         </nav>
-        <div class="container">
-            <div class="col-xs-12 col-md-8">
-            {{ content }}
-            </div>
-            <div class="col-md-4">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4><span class="glyphicon glyphicon-pencil"></span> About the Author</h4>
-                        </div>
-                        <div class="panel-body">
-                            <img class="img-rounded pull-right" src="https://www.gravatar.com/avatar/0a1cca744d3e02c9e927cdb74210716c.png" alt="Kevin's Gravatar" />
-                            Kevin Howell<br>
-                            Software Engineer<br>
-                            kevin@kahowell.net
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4><span class="glyphicon glyphicon-globe"></span> Around the Web</h4>
-                        </div>
-                        <div class="panel-body">
-                            <a href="https://github.com/kahowell">github.com/kahowell</a><br />
-                            <a href="https://twitter.com/kevin_a_howell">twitter.com/kevin_a_howell</a><br />
-                            <a href="http://stackoverflow.com/users/1881136/kahowell">stackoverflow profile</a>
-                        </div>
-                    </div>
+        <div class="container my-5">
+            <div class="row">
+                <div>
+                    {{ content }}
                 </div>
             </div>
+            <footer >
+                <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+                    <p>
+                        &copy; 2022 Kevin Howell. Opinions are my own and not the views of my employer.
+                    </p>
+                    <ul class="list-unstyled d-flex">
+                        <li class="ms-3">
+                            <a class="link-dark" href="https://github.com/kahowell">
+                                <img src="/icons/github.svg" alt="GitHub icon" width="24" height="24">
+                            </a>
+                        </li>
+                        <li class="ms-3">
+                            <a class="link-dark" href="https://twitter.com/kevin_a_howell">
+                                <img src="/icons/twitter.svg" alt="Twitter icon" width="24" height="24">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+            
         </div>
-        <div class="container">
-            <div class="col-md-12">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4><span class="glyphicon glyphicon-warning-sign"></span> Disclaimer</h4>
-                        </div>
-                        <div class="panel-body">
-                            The views expressed here are not those of, and
-                            are not endorsed by, any of my employers -
-                            past, present, or future, or of any
-                            individuals or organizations I am associated
-                            with.
-                        </div>
-                    </div>
-                    <div class="col-xs-12">&copy; 2015 Kevin Howell. Powered by Jekyll and GitHub Pages.</div>
-                </div>
-            </div>
-        </div>
+        <script src="/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
