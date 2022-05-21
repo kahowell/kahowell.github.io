@@ -9,8 +9,7 @@ I finally got around to committing my second attempt at an XML fuzzer. It is
 not yet complete, but may still be useful. It is licensed under the MIT
 license.
 
-[http://github.com/kahowell/java-xmlfuzzer][github]
-[github]: http://github.com/kahowell/java-xmlfuzzer
+[https://github.com/kahowell/java-xmlfuzzer][github]
 
 The project uses Apache's schema support in the XMLBeans library to read a
 given XSD file, and then proceeds to traverse the XSD, starting at a specified
@@ -37,3 +36,5 @@ to participate, feel [free to fork it on GitHub][github].
 
 I also hope to document the project a little better/write a little more about
 it. If I do, I will update this post accordingly.
+
+[github]: [https://github.com/kahowell/java-xmlfuzzer]

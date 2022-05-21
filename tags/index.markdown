@@ -4,7 +4,7 @@ layout: default
 ---
 {% for tag in site.tags_to_show %}
 <a id="{{ tag | xml_escape }}"></a>
-####{{ tag }}
+#### {{ tag }}
 {% for post in site.tags[tag] %}
 <ul>
 {% include post.html %}
