@@ -2,9 +2,12 @@
 title: tags
 layout: default
 ---
-{% for tag in site.tags_to_show %}
-<a id="{{ tag | xml_escape }}"></a>
-#### {{ tag }}
+{% for post in site.posts %}
+    {% assign all_tags = all_tags | concat: post.tags %}
+{% endfor %}
+{% assign all_tags = all_tags | sort | uniq %}
+{% for tag in all_tags %}
+#### [{{ tag }}](#{{ tag }})
 {% for post in site.tags[tag] %}
 <ul>
 {% include post.html %}

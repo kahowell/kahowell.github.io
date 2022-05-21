@@ -1,6 +1,6 @@
 ---
 name: Kevin Howell
-markdown: redcarpet
+markdown: kramdown
 highlighter: rouge
 nav_pages:
   home: "/"
@@ -8,30 +8,3 @@ nav_pages:
   projects: "/projects"
   presentations: "/presentations"
   links: "/links"
-tags_to_show:
-- angularjs
-- c
-- c++
-- cordova
-- eclipse
-- fedora
-- fuzzer
-- gles
-- guice
-- java
-- maven
-- mobile
-- opengl
-- physicsfs
-- pouchdb
-- project
-- python
-- python 3
-- recipe
-- refactoring
-- rpm
-- thunderbird
-- tips
-- xml
-- xpcom
-- xsd

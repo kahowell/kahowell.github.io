@@ -10,7 +10,7 @@ layout: default
     <div class="panel-heading">Tags for this post</div>
     <div class="panel-body">
         {% for tag in page.tags %}
-            <a href="/tags/#{{tag | uri_escape}}"><span class="label label-primary">{{ tag }}</span></a>
+            <a href="/tags/#{{ tag | replace: " ", "-" }}"><span class="label label-primary">{{ tag }}</span></a>
         {% endfor %}
     </div>
 </div>
