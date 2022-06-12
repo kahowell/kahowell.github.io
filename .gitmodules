@@ -7,3 +7,6 @@
 [submodule "presentations/2020-06-13_automation_101_ansible/reveal.js"]
 	path = presentations/2020-06-13_automation_101_ansible/reveal.js
 	url = https://github.com/hakimel/reveal.js
+[submodule "presentations/2022-06-12_diagramming/reveal.js"]
+	path = presentations/2022-06-12_diagramming/reveal.js
+	url = https://github.com/hakimel/reveal.js
