@@ -126,9 +126,9 @@ note:
 
 diagrams.net (formerly draw.io)
 
-TODO: split hybrid cloud
-
-<img alt="diagrams.net" src="diagrams.net.drawio.png">
+<div class="r-stretch">
+  <img alt="diagrams.net" src="hybridcloud.drawio.png" height="100%">
+</div>
 
 note:
 * free form
@@ -139,13 +139,27 @@ note:
 
 ---
 
+diagrams.net (formerly draw.io)
+
+<div class="r-stretch">
+  <img alt="diagrams.net" src="diagrams.net.drawio.png" height="100%">
+</div>
+
+---
+
 Excalidraw
 
-<img alt="Excalidraw" src="excalidraw.png">
+<div class="r-stretch">
+  <img alt="Excalidraw" src="excalidraw.png" height="100%">
+</div>
 
 ---
 
 These are great, but they're open-ended...
+
+<div class="r-stretch">
+  <img alt="Azure, dog on papers" src="azure_organized.jpg" height="100%">
+</div>
 
 <p class="fragment">
   Instead, create diagrams in a more constrained way
@@ -168,8 +182,9 @@ digraph {
 ```shell
 dot -Tsvg example.dot -o example.dot.svg
 ```
-
-<img alt="so graph, much wow" src="example.dot.svg">
+<div class="r-stretch">
+  <img alt="so graph, much wow" src="example.dot.svg" height="100%">
+</div>
 
 Try http://viz-js.com or https://sketchviz.com for interactive editing.
 
@@ -194,7 +209,9 @@ note:
 
 console.redhat.com turnpike API gateway mTLS auth flow
 
-<img alt="console.redhat.com mTLS sequence diagram" src="turnpike-mtls.png">
+<div class="r-stretch">
+  <img alt="console.redhat.com mTLS sequence diagram" src="turnpike-mtls.png" height="auto">
+</div>
 
 note:
 * I'm not a fan of UML aside from sequence diagrams, too complex.
@@ -211,9 +228,9 @@ C4
 ---
 
 C4: Context Diagram
-
-<img alt="console.redhat.com subscription watch context diagram" src="swatch-context.svg">
-
+<div class="r-stretch">
+<img alt="console.redhat.com subscription watch context diagram" src="swatch-context.svg" height="100%">
+</div>
 note:
 * for the most part, just boxes
 * actors and systems
@@ -221,7 +238,10 @@ note:
 ---
 
 C4: Container Diagram
-<img alt="console.redhat.com subscription watch UI/API container diagram" src="swatch-container-ui.svg">
+
+<div class="r-stretch">
+<img alt="console.redhat.com subscription watch UI/API container diagram" src="swatch-container-ui.svg" height="100%">
+</div>
 
 note:
 * deployable artifacts, databases
@@ -230,7 +250,9 @@ note:
 
 C4: Component Diagram
 
-<img alt="plantuml component diagram sample" src="component-sample.png">
+<div class="r-stretch">
+<img alt="plantuml component diagram sample" src="component-sample.png" height="100%">
+</div>
 
 Source: C4-PlantUML samples
 
@@ -273,7 +295,9 @@ spec:
         - containerPort: 80
 ```
 
-<img alt="k8s deployment yaml visualized" src="k8s-deployment.png">
+<div class="r-stretch">
+  <img alt="k8s deployment yaml visualized" src="k8s-deployment.png" height="100%">
+</div>
 
 ---
 
@@ -303,8 +327,9 @@ graph TD
     C -->|Two| E[iPhone]
     C -->|Three| F[fa:fa-car Car]
 ```
-
-<img alt="mermaid flow chart" src="mermaid-flow-chart.png">
+<div class="r-stretch">
+<img alt="mermaid flow chart" src="mermaid-flow-chart.png" height="100%">
+</div>
 
 ---
 
@@ -318,7 +343,9 @@ sequenceDiagram
     John-->>-Alice: I feel great!
 ```
 
-<img alt="mermaid sequence diagram" src="mermaid-sequence-diagram.png">
+<div class="r-stretch">
+<img alt="mermaid sequence diagram" src="mermaid-sequence-diagram.png" height="100%">
+</div>
 
 ---
 
@@ -334,7 +361,9 @@ stateDiagram-v2
     Crash --> [*]
 ```
 
-<img alt="mermaid state diagram" src="mermaid-state-diagram.png">
+<div class="r-stretch">
+<img alt="mermaid state diagram" src="mermaid-state-diagram.png" height="100%">
+</div>
 
 ---
 
@@ -366,17 +395,27 @@ Keep your diagrams with your code.
 Software Architecture for Developers - Simon Brown
 
 https://excalidraw.com
+
 https://diagrams.net
-https://plantuml.com/
+
+https://plantuml.com
+
 https://c4model.com
+
 https://kroki.io
 
 ---
 
 # Feedback
 
-kevin@kahowell.net
+Thank you and stay cool!
 
-Twitter: @kevin_a_howell
+<div class="r-stretch">
+  <img alt="azure, dog cooling off" src="azure_stay_cool.jpg" height="100%">
+</div>
 
+<p>
+kevin@kahowell.net<br>
+Twitter: @kevin_a_howell<br>
 GitHub: kahowell
+</p>
