@@ -1,0 +1,296 @@
+---
+title: Visualizing Kubernetes with Generated Diagrams
+author:
+  name: Kevin Howell
+  affiliation: Red Hat
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: c/t
+    code-line-numbers: false
+title-slide-attributes: 
+  data-background-image: orbtal-media-Esq0ovRY-Zs-unsplash.jpg
+  data-background-opacity: "0.4"
+---
+
+## Agenda
+
+::: columns
+::::{.column width="80%"}
+* Kubernetes primer
+* Exploring resources without diagrams
+* k8sviz
+* kubectl graph
+* Advice
+::::
+::::{.column width="20%"}
+![](calendar.svg)
+::::
+:::
+
+:::{.notes}
+First I'll frame why diagrams are useful for kubernetes and then we'll look at a couple of tools for diagramming k8s:
+
+* k8sviz
+* kubectl graph
+
+And then I'll wrap up with some general thoughts.
+:::
+
+## About Me
+
+:::: {.columns}
+::: {.column width="70%"}
+* Principal Software Engineer at Red Hat
+* console.redhat.com subscriptions Tech Lead
+* Raleigh, NC
+* @kahowell@mastodon.social
+* https://kahowell.net
+:::
+::: {.headshot .column width="30%"}
+![](headshot_2021_cropped.jpg)
+:::
+
+:::{.notes}
+First up a bit about me.
+Java, Quarkus, OpenShift, Tekton
+:::
+
+::::
+
+## Kubernetes Primer
+:::: {.columns}
+::: {.column .incremental width="50%"}
+* Declarative interface
+* API resources
+* Distributed workloads
+* Container-centric
+:::
+::: {.column width="50%"}
+![](Kubernetes_logo.svg)
+:::
+::::
+
+:::{.notes}
+1. In kubernetes you declare the desired state of things and then kubernetes is responsible to "make it so".
+2. Declarations are in the language of API resources. Every resource has a `group` (namespace), `kind`, and `name`.
+3. Because kubernetes is all about running fault-tolerant, distributed workloads, it's often necessary to have multiple instances of a given resource.
+4. Kubernetes is container-centric. Often, we work at an abstraction level above individual containers though.
+
+To elaborate on the last couple of points, distributed workloads and layers of abstraction increase the cognitive complexity of dealing with Kubernetes applications.
+:::
+
+## Abstractions in Kubernetes
+
+```{dot}
+digraph g {
+  Deployment -> ReplicaSet
+  ReplicaSet -> Pod
+  Pod -> Container
+}
+```
+
+:::{.notes}
+1. Deployment is a common resource type, responsible for running a workload and performing rolling updates.
+2. Deployments are implemented with one or more replicasets, responsible for keeping a number of copies of a workload running.
+3. Replicasets schedule pods, one or more containers running together on the same node.
+:::
+
+## Navigating Relationships - CLI
+
+Get owner:
+
+```bash
+kubectl get $type/$name \
+  -o template \
+  --template \
+  '{{(index .metadata.ownerReferences 0).kind}}/'\
+'{{(index .metadata.ownerReferences 0).name}}'
+```
+
+:::{.fragment}
+... and repeat
+:::
+
+:::{.notes}
+It's one thing to conceptually understand those abstractions, and another to explore them in a running application.
+
+First, we'll talk about the how relationships are available through the API (and consequently the CLI), every resource optionally has an `ownerReferences` field in the metadata that points to its parent or parents.
+
+You can query this for a given resource by using this kubectl command.
+:::
+
+## Navigating Relationships - GUI
+
+![Owner Links in OpenShift/OKD](okd_owner_link.png)
+
+:::{.notes}
+If you're using a Kubernetes service with a web UI, you can often follow the trail using hyperlinks.
+:::
+
+## The Pattern for Diagrams
+
+* Query Resources
+* Draw a graph
+  * k8s resources, relationships
+  * as nodes and edges
+
+:::{.notes}
+Given we're navigating a graph, it's hopefully obvious that we can draw a diagram of that graph, and that it can be automated.
+
+Conceptually, it's pretty simple:
+
+* query some resources
+* lay them out in a graph.
+:::
+
+## k8sviz
+
+https://github.com/mkimuram/k8sviz
+
+:::{.fragment}
+### Installation
+
+```bash
+git clone https://github.com/mkimuram/k8sviz
+cd k8sviz
+make build  # requires golang
+cp -R icons bin/
+```
+:::
+
+:::{.fragment}
+### Usage
+
+```bash
+# output a graphviz source file
+bin/k8sviz -n keycloak-system -t dot -o keycloak.dot
+# generate a png image
+bin/k8sviz -n keycloak-system -t png -o keycloak.png
+```
+:::
+
+## k8sviz - Results
+
+![keycloak diagram](keycloak.png)
+
+:::{.notes}
+This works, but it's hard to read a tall diagram in a wide presentation.
+:::
+
+## k8sviz - Results (edited)
+
+![keycloak diagram - edited for LR layout & bigger font](keycloak2.png)
+
+:::{.notes}
+There we go!
+
+Here you can see at a glance:
+* A deployment for the keycloak operator
+* StatefulSets for Postgres and an example keycloak deployment
+* the replicasets, pods, services, and ingress instances underneath those objects
+:::
+
+## k8sviz - Ideas for Improvment
+
+::: {.incremental}
+* packaging
+* layout, font options
+* filters
+* custom resource support
+* offline support (helm charts, kustomize)
+:::
+
+:::{.notes}
+* It would be ideal if this were packaged in Fedora or Ubuntu
+* If there were better layout and font options/defaults, would be helpful
+* Sometimes you don't need to see all the resources
+* Sometimes you have all you need locally to get a representation of an application in k8s
+:::
+
+## kubectl-graph 
+
+https://github.com/steveteuber/kubectl-graph
+
+:::{.fragment}
+### Installation
+
+```bash
+# assumes krew already installed
+# https://krew.sigs.k8s.io/docs/user-guide/setup/install/
+kubectl krew install graph
+```
+:::
+
+:::{.fragment}
+### Usage
+
+```bash
+# kubectl graph $type0,$type1,...
+kubectl graph keycloak,deployments,replicasets,statefulsets
+```
+:::
+
+## kubectl-graph - Graphviz
+
+```{dot}
+//| fig-cap: "kubectl graph rendering of keycloak resources."
+//| file: kubectl-graph-keycloak.dot
+```
+
+## kubectl-graph - Mermaid (edited for LR layout)
+
+```{mermaid}
+%%| file: keycloak.mmd
+```
+
+## kubectl-graph - Ideas for Improvment
+
+:::{.incremental}
+* alternative packaging (rpm, deb)
+* icons
+* layout, font options
+* edge choices
+:::
+
+:::{.notes}
+* It would be ideal if this were packaged in Fedora or Ubuntu
+* If there were better layout and font options/defaults, would be helpful
+* Sometimes you don't need to see all the resources
+* Using resource types as edges is an interesting choice for more dense diagrams, but I'd like options.
+:::
+
+## Advice
+
+::: {.incremental}
+* Don't be afraid to edit diagrams
+* Try multiple tools/formats
+:::
+
+## Red Hat Developer
+
+* no-cost subscription for individuals
+* free sandbox environments
+* https://developers.redhat.com
+
+## Q&A
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+Thanks for attending!
+
+* @kahowell@mastodon.social
+* https://kahowell.net
+
+:::{.callout-note}
+Title slide Photo by <a href="https://unsplash.com/@orbtalmedia?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">orbtal media</a> on <a href="https://unsplash.com/photos/brown-wooden-ships-wheel-Esq0ovRY-Zs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+:::
+:::
+
+::: {.column width="40%"}
+![red.ht/SCALE2024](redhat_scale_2024_qrcode.png)
+:::
+
+::::

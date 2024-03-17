@@ -1,0 +1,608 @@
+---
+title: Automating Development Environments with Ansible & Chezmoi
+author:
+  name: Kevin Howell
+  affiliation: Red Hat
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: c/t
+    code-line-numbers: false
+title-slide-attributes: 
+  data-background-image: ansible_code.png
+  data-background-opacity: "0.4"
+---
+
+## Agenda
+
+::: columns
+::::{.column width="80%"}
+* Background & Framing
+* Ansible
+* Chezmoi
+* Inspiration
+::::
+::::{.column width="20%"}
+![](calendar.svg)
+::::
+:::
+
+:::{.notes}
+First we're going to talk about how I define a development environment,
+considerations around automation,
+
+And then I'll wrap up with some general thoughts.
+:::
+
+## About Me
+
+:::: {.columns}
+::: {.column width="70%"}
+* Principal Software Engineer at Red Hat
+* console.redhat.com subscriptions Tech Lead
+* Raleigh, NC
+* @kahowell@mastodon.social
+* https://kahowell.net
+:::
+::: {.headshot .column width="30%"}
+![](headshot_2021_cropped.jpg)
+:::
+
+:::{.notes}
+First up a bit about me.
+Java, Quarkus, OpenShift, Tekton
+:::
+
+::::
+
+## Why
+
+:::::: {.columns}
+:::: {.column width="33%"}
+:::{.border}
+![](laptop.svg)
+System replacement
+:::
+::::
+:::: {.column width="33%"}
+:::{.border}
+![](network-wired.svg)
+Multiple machines
+:::
+::::
+:::: {.column width="33%"}
+:::{.border}
+![](house.svg)
+Share between Work & Home
+:::
+::::
+::::::
+
+:::{.notes}
+When you retire an old machine and replace it, it's nice to start fresh (restoring from backup works too, but comes with quirks like drivers, etc.)
+
+New hardware for various reasons:
+* retirement of old assets
+* hardware failure
+* better hardware (e.g. LLM stuff)
+
+* More than one machine - show of hands:
+  more than 2:
+  2
+  1
+  0
+* maybe the other machine is a phone, or a machine on a cloud provider
+
+* Learn a config or find a package at work/home and want to use in both.
+:::
+
+## Pets vs. Cattle
+
+::::{.columns}
+:::{.column width="50%"}
+![](20240301_163848.jpg)
+:::
+:::{.column width="50%"}
+![](rasmus-andersen-DsGuCK7yQMc-unsplash.jpg)
+
+:::{.footer}
+Cow Photo by <a href="https://unsplash.com/@rasmusandersen?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Rasmus Andersen</a> on <a href="https://unsplash.com/photos/a-herd-of-cattle-laying-on-top-of-a-grass-covered-field-DsGuCK7yQMc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+:::
+:::
+::::
+
+:::{.notes}
+Okay, so there's this analogy that's been around a long time. (Pets vs. cattle)
+
+The gist:
+* pets are cared for individually
+* cattle are cared for as a group
+:::
+
+## {.center}
+
+:::{.r-fit-text}
+What about pet cows?
+:::
+
+:::{.notes}
+It's a flawed analogy (on the surface), because sometimes we find something in between.
+:::
+
+## Other Motivations
+
+:::::: {.columns}
+:::: {.column width="33%"}
+:::{.border}
+![](brain.svg)
+Learn a new skill
+:::
+::::
+:::: {.column width="33%"}
+:::{.border}
+![](handshake.svg)
+Share
+:::
+::::
+:::: {.column width="33%"}
+:::{.border}
+![](star.svg)
+Cool Factor
+:::
+::::
+::::::
+
+:::{.notes}
+You have to admit, sometimes we automate things or try tools because of the cool factor
+:::
+
+##
+
+![https://xkcd.com/1205/](is_it_worth_the_time_2x.png)
+
+## {.center background-image="angele-kamp-IWzloaVyoOw-unsplash.jpg" background-opacity="0.3"}
+
+::: {.r-fit-text}
+Framing
+:::
+
+::: footer
+Photo by <a href="https://unsplash.com/@angelekamp?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Angèle Kamp</a> on <a href="https://unsplash.com/photos/green-cactus-plant-IWzloaVyoOw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+:::
+
+::: notes
+Let's talk framing, how I think about this.
+:::
+
+## Layers
+
+```{dot}
+digraph G {
+  "Base OS Install" -> "System Customizations"
+  "System Customizations" -> Packages
+  "System Customizations" -> "System Config"
+  "Base OS Install" -> "User Customizations"
+  "User Customizations" -> "User Config"
+  "User Customizations" -> "Tools"
+  "User Customizations" -> "Scripts"
+}
+```
+
+:::{.notes}
+System customizations: things you need sudo for
+User customizations: things you don't need sudo for
+
+As you move from system -> user customizations, it feels less like "cattle" and more like pets.
+:::
+
+## Base OS Install
+
+Just install and accept defaults.
+
+:::{.incremental}
+* ... vs Kickstart/unattended install
+* ... vs Custom Install Image
+:::
+
+:::{.notes}
+Or you could automate but:
+* need to maintain it
+* need to put credentials in a file somewhere (ew!)
+
+Or you could do a custom install but:
+* maintenance again!
+:::
+
+## {.center}
+
+![](Ansible-Community-Logo-RGB-Black.png)
+
+## Ansible - Why
+
+* automate lots of things
+* python
+
+![](Ansible-Community-Logo-RGB-Black.png){.absolute right="0" bottom="0" width="20%"}
+
+## Ansible Installation
+
+```bash
+dnf install -y ansible
+```
+
+:::{.fragment}
+for Ubuntu
+```bash
+apt install -y ansible
+```
+:::
+
+![](Ansible-Community-Logo-RGB-Black.png){.absolute right="0" bottom="0" width="20%"}
+
+## Basic Ansible Setup
+
+```bash
+# go to a standard role directory
+mkdir -p ~/.ansible/roles; cd ~/.ansible/roles
+# create a role
+ansible-galaxy role init $USER-environment
+```
+
+## Ansible Role Contents
+```bash {code-line-numbers="3,9-10,11"}
+├── defaults
+│   └── main.yml
+├── files
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── README.md
+├── tasks
+│   └── main.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+```
+
+## Ansible - Basic Workflow
+
+```bash
+# update it to do some stuff
+$EDITOR tasks/main.yml
+# run it - lazy shortcut
+ansible -K localhost -c local \
+  -m include_role -a name=$USER-environment
+```
+
+(and commit/push to a repo for sharing)
+
+:::{.notes}
+There are other ways to run the ansible code against machines, but this works locally (and y'all can lookup how to run Ansible against remote machines - I believe in you!)
+:::
+
+![](Ansible-Community-Logo-RGB-Black.png){.absolute right="0" bottom="0" width="20%"}
+
+## Packages
+
+Package types:
+
+* rpm/deb
+* flatpak
+* snap
+* homebrew (linuxbrew)
+
+```yaml
+- name: Install RPMs
+  ansible.builtin.dnf:
+    name:
+      - '@Development Tools'
+      - ansible-lint
+```
+
+:::{.notes}
+For each package manager you use maintain a list of what you install.
+
+Get in the habit of updating anytime you install a new package.
+
+Can use commands to get a list (e.g. command history) - maintenance challenges
+:::
+
+![](Ansible-Community-Logo-RGB-Black.png){.absolute right="0" bottom="0" width="20%"}
+
+## Package Origin Preferences
+
+:::{.incremental}
+* Distro packages
+* Flatpak
+* Homebrew
+* Snap
+:::
+
+:::{.notes}
+* distro maintainers ensure it works on your distro
+* flatpak/snap: same experience across distros (but I don't like snap all that much personally)
+* homebrew: share with the mac folks
+
+(You might choose a different order, based on your own preferences &needs)
+:::
+
+![](Ansible-Community-Logo-RGB-Black.png){.absolute right="0" bottom="0" width="20%"}
+
+## System Config - Files
+
+`files/no-passwords.conf`
+```sshd_config
+PasswordAuthentication no
+```
+
+Ansible:
+```yaml
+- name: Disable ssh password authentication
+  become: true
+  ansible.builtin.copy:
+    src: no-passwords.conf
+    dest: /etc/ssh/sshd_config.d/no-passwords.conf
+    mode: '0600'
+```
+
+![](Ansible-Community-Logo-RGB-Black.png){.absolute right="0" bottom="0" width="20%"}
+
+## System Config - Templates
+
+`templates/sudoers-custom.j2`
+```sudoers
+{{ ansible_user_id }} ALL=(ALL) NOPASSWD: ALL
+```
+
+Ansible:
+```yaml
+- name: Land sudoers template
+  ansible.builtin.template:
+    src: sudoers-custom.j2
+    dest: /etc/sudoers.d/sudoers-custom
+    validate: /usr/sbin/visudo -cf %s
+```
+
+:::{.notes}
+These are generally set-and-forget things.
+
+Raw files and templates.
+
+There are lots of modules that offer higher level of abstraction, but these go a long way.
+:::
+
+![](Ansible-Community-Logo-RGB-Black.png){.absolute right="0" bottom="0" width="20%"}
+
+## Using Ansible Elsewhere
+
+```bash
+ansible-galaxy role install \
+  --force \
+  git+https://github.com/$USER/$USER-environment
+ansible -K localhost -c local \
+  -m include_role -a name=$USER-environment
+```
+
+:::{.callout-note}
+You can apply remotely as well, see docs.
+:::
+
+## Ansible - Other Capabilities
+
+* Manage users/groups
+* Manage services/jobs (systemd & cron)
+* Execute commands/scripts
+
+![](Ansible-Community-Logo-RGB-Black.png){.absolute right="0" bottom="0" width="20%"}
+
+## Chezmoi {.center background-color="black"}
+
+![](chezmoi-logo.svg){fig-align="center" .r-stretch}
+
+## Chezmoi - Why
+
+* lighter weight
+* better than files in a git repo
+* ergonomics
+
+![](logo-256px.png){.absolute right="0" bottom="0" width="20%"}
+
+## Chezmoi Installation
+
+```bash
+# also pulls dotfiles if you already use chezmoi
+sh -c "$(curl -fsLS get.chezmoi.io)" \
+  -- init \
+  --apply \
+  $GITHUB_USERNAME
+```
+
+![](logo-256px.png){.absolute right="0" bottom="0" width="20%"}
+
+## User Config
+
+:::{.incremental}
+* vim vs. emacs
+* vs. vscode
+* vs. vscodium
+:::
+:::{.incremental}
+* .bashrc
+* .zshrc
+* .gitconfig
+:::
+
+:::{.fragment}
+```bash
+chezmoi add ~/.bashrc
+chezmoi git commit
+chezmoi git push
+```
+:::
+
+![](logo-256px.png){.absolute right="0" bottom="0" width="20%"}
+
+:::{.notes}
+Show of hands, do you prefer...
+
+I'm a bash person, myself, but shoutout to those that like zsh
+
+gitconfig: And sometimes you don't edit these yourself, but they still matter.
+:::
+
+## Templates
+
+`dot_gitconfig.tmpl`
+```ini
+[user]
+  name = Kevin Howell
+  email = {{ .email }}
+[core]
+  editor = vim
+[diff]
+  tool = meld
+[init]
+  defaultBranch = main
+```
+
+![](logo-256px.png){.absolute right="0" bottom="0" width="20%"}
+
+## Tools
+
+Useful code that isn't distro packaged (yet)
+
+:::::: {.columns}
+:::: {.column width="33%"}
+:::{.border2}
+![](github-mark.svg)
+GitHub Releases
+:::
+::::
+:::: {.column width="33%"}
+:::{.border2}
+![](Python-logo-notext.svg)
+Python Packages
+:::
+::::
+:::: {.column width="33%"}
+:::{.border2 .npm-logo}
+![](npm-logo-black.svg)
+Node Packages
+:::
+::::
+::::::
+
+![](logo-256px.png){.absolute right="0" bottom="0" width="20%"}
+
+## Managing GitHub Releases
+
+`~/.local/share/chezmoi/
+  .chezmoiexternal.toml.tmpl`
+
+```toml
+{{ $versions := (fromYaml (include "versions.yaml")) -}}
+["bin/ollama"]
+    type = "file"
+    executable = true
+    url = "https://github.com/ollama/ollama/releases/download/{{ $versions.ollama }}/ollama-linux-amd64"
+```
+
+:::{.callout-tip}
+You can use this with renovate to get automated updates.
+:::
+
+![](logo-256px.png){.absolute right="0" bottom="0" width="20%"}
+
+## Managing Python Packages
+
+`~/.local/share/chezmoi/
+  run_after_poetryinstall.sh`
+
+```bash
+#!/bin/bash
+cd ~/tools/python  # make sure include this in $PATH
+poetry install --no-root --sync
+```
+
+:::{.callout-note}
+Can follow a similar pattern for npm packages.
+:::
+
+:::{.callout-tip}
+You can use this with renovate/dependabot to get automated updates.
+:::
+
+![](logo-256px.png){.absolute right="0" bottom="0" width="20%"}
+
+## Scripts
+
+1. scripts git repo (can add to `$PATH`)
+2. directly in dotfiles repo
+
+![](logo-256px.png){.absolute right="0" bottom="0" width="20%"}
+
+:::{.notes}
+Prefer the git repo if you want to share maintence (e.g. team, oss-project)
+
+Directly in dotfiles repo is fine too.
+:::
+
+## Using Chezmoi Elsewhere
+
+```bash
+chezmoi init $username --apply
+```
+
+![](logo-256px.png){.absolute right="0" bottom="0" width="20%"}
+
+## Inspiration
+
+* Browse Ansible Galaxy for roles (https://galaxy.ansible.com)
+* Browse Ansible collections docs (https://docs.ansible.com)
+* Search GitHub for topic: chezmoi
+(https://github.com/topics/chezmoi)
+* Search github for dotfiles repos
+
+:::{.notes}
+Ansible Galaxy has community and partner automation for lots of things.
+
+Take a look at the Ansible module docs. No, really, they have lots of good examples!
+
+Chezmoi's default workflow encourages publishing your dotfiles to github, so there are tons of chezmoi repos out there. A lot of folks tag them with the chezmoi topic.
+
+Non-chezmoi dotfiles repos are useful too.
+:::
+
+## My Repos
+
+* https://github.com/kahowell/kahowell-environment
+* https://github.com/kahowell/dotfiles
+
+## Red Hat Developer
+
+* no-cost subscription for individuals
+* free sandbox environments
+* https://developers.redhat.com
+
+## Q&A
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+Thanks for attending!
+
+* @kahowell@mastodon.social
+* https://kahowell.net
+
+:::
+
+::: {.column width="40%"}
+![red.ht/SCALE2024](redhat_scale_2024_qrcode.png)
+:::
+
+::::
