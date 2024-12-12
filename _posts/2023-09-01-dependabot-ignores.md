@@ -1,7 +1,6 @@
 ---
 title: Dependabot Ignores
 tags: [dependabot, github]
-category: project
 permalink: /2023/09/dependabot_ignores.html
 layout: post
 ---
