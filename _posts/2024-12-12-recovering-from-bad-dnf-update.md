@@ -39,9 +39,10 @@ Roughly the commands I used were:
 
 ```shell
 truncate -s 1G /tmp/rescue.btrfs
-btrfs device add /dev/loop0 $(losetup --show -f /tmp/rescue.btrfs) /
+LOOP=$(losetup --show -f /tmp/rescue.btrfs)
+btrfs device add $LOOP /
 btrfs balance start / --full-balance
-btrfs device remove /dev/loop0 /
+btrfs device remove $LOOP
 ```
 
 After this completed, I had a working filesystem again, but metadata usage was
