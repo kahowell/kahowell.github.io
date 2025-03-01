@@ -1,0 +1,478 @@
+[
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "projects",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nCode\n\n\n\n\n\n\nNutrition w/ Pyodide\n\n\nGitHub \n\n\n\n\nPS1 Memory Card Editor\n\n\nGitHub \n\n\n\n\nPhysFS++ (C++ PhysicsFS Wrapper)\n\n\n \n\n\n\n\nRyouri Book\n\n\n \n\n\n\n\nThunderbird Scripting Plugin (DuckPond)\n\n\n \n\n\n\n\nXML Fuzzer (Python)\n\n\n \n\n\n\n\nXML Fuzzer/Generator (Java)\n\n\n \n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#agenda",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#agenda",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Agenda",
+    "text": "Agenda\n\n\n\nBackground & Framing\nAnsible\nChezmoi\nInspiration\n\n\n\n\n\nFirst we’re going to talk about how I define a development environment, considerations around automation,\nAnd then I’ll wrap up with some general thoughts."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#about-me",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#about-me",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "About Me",
+    "text": "About Me\n\n\n\nPrincipal Software Engineer at Red Hat\nconsole.redhat.com subscriptions Tech Lead\nRaleigh, NC\n@kahowell@mastodon.social\nhttps://kahowell.net\n\n\n\n\nFirst up a bit about me. Java, Quarkus, OpenShift, Tekton"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#why",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#why",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Why",
+    "text": "Why\n\n\n\n System replacement\n\n\n\n Multiple machines\n\n\n\n Share between Work & Home\n\n\n\nWhen you retire an old machine and replace it, it’s nice to start fresh (restoring from backup works too, but comes with quirks like drivers, etc.)\nNew hardware for various reasons: * retirement of old assets * hardware failure * better hardware (e.g. LLM stuff)\n\nMore than one machine - show of hands: more than 2: 2 1 0\nmaybe the other machine is a phone, or a machine on a cloud provider\nLearn a config or find a package at work/home and want to use in both."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#pets-vs.-cattle",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#pets-vs.-cattle",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Pets vs. Cattle",
+    "text": "Pets vs. Cattle\n\n\n\n\n\n\nCow Photo by Rasmus Andersen on Unsplash\n\n\n\nOkay, so there’s this analogy that’s been around a long time. (Pets vs. cattle)\nThe gist: * pets are cared for individually * cattle are cared for as a group"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#section",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#section",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "",
+    "text": "What about pet cows?\n\n\nIt’s a flawed analogy (on the surface), because sometimes we find something in between."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#other-motivations",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#other-motivations",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Other Motivations",
+    "text": "Other Motivations\n\n\n\n Learn a new skill\n\n\n\n Share\n\n\n\n Cool Factor\n\n\n\nYou have to admit, sometimes we automate things or try tools because of the cool factor"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#section-1",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#section-1",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "",
+    "text": "https://xkcd.com/1205/"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#section-2",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#section-2",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "",
+    "text": "Framing\n\n\nPhoto by Angèle Kamp on Unsplash\n\n\nLet’s talk framing, how I think about this."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#layers",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#layers",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Layers",
+    "text": "Layers\n\n\n\n\n\n\n\nG\n\n\n\nBase OS Install\n\nBase OS Install\n\n\n\nSystem Customizations\n\nSystem Customizations\n\n\n\nBase OS Install-&gt;System Customizations\n\n\n\n\n\nUser Customizations\n\nUser Customizations\n\n\n\nBase OS Install-&gt;User Customizations\n\n\n\n\n\nPackages\n\nPackages\n\n\n\nSystem Customizations-&gt;Packages\n\n\n\n\n\nSystem Config\n\nSystem Config\n\n\n\nSystem Customizations-&gt;System Config\n\n\n\n\n\nUser Config\n\nUser Config\n\n\n\nUser Customizations-&gt;User Config\n\n\n\n\n\nTools\n\nTools\n\n\n\nUser Customizations-&gt;Tools\n\n\n\n\n\nScripts\n\nScripts\n\n\n\nUser Customizations-&gt;Scripts\n\n\n\n\n\n\n\n\n\n\n\nSystem customizations: things you need sudo for User customizations: things you don’t need sudo for\nAs you move from system -&gt; user customizations, it feels less like “cattle” and more like pets."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#base-os-install",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#base-os-install",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Base OS Install",
+    "text": "Base OS Install\nJust install and accept defaults.\n\n\n… vs Kickstart/unattended install\n… vs Custom Install Image\n\n\n\nOr you could automate but: * need to maintain it * need to put credentials in a file somewhere (ew!)\nOr you could do a custom install but: * maintenance again!"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#ansible---why",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#ansible---why",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Ansible - Why",
+    "text": "Ansible - Why\n\nautomate lots of things\npython"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#ansible-installation",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#ansible-installation",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Ansible Installation",
+    "text": "Ansible Installation\ndnf install -y ansible\n\nfor Ubuntu\napt install -y ansible"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#basic-ansible-setup",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#basic-ansible-setup",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Basic Ansible Setup",
+    "text": "Basic Ansible Setup\n# go to a standard role directory\nmkdir -p ~/.ansible/roles; cd ~/.ansible/roles\n# create a role\nansible-galaxy role init $USER-environment"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#ansible-role-contents",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#ansible-role-contents",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Ansible Role Contents",
+    "text": "Ansible Role Contents\n├── defaults\n│   └── main.yml\n├── files\n├── handlers\n│   └── main.yml\n├── meta\n│   └── main.yml\n├── README.md\n├── tasks\n│   └── main.yml\n├── templates\n├── tests\n│   ├── inventory\n│   └── test.yml\n└── vars\n    └── main.yml"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#ansible---basic-workflow",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#ansible---basic-workflow",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Ansible - Basic Workflow",
+    "text": "Ansible - Basic Workflow\n# update it to do some stuff\n$EDITOR tasks/main.yml\n# run it - lazy shortcut\nansible -K localhost -c local \\\n  -m include_role -a name=$USER-environment\n(and commit/push to a repo for sharing)\n\nThere are other ways to run the ansible code against machines, but this works locally (and y’all can lookup how to run Ansible against remote machines - I believe in you!)"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#packages",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#packages",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Packages",
+    "text": "Packages\nPackage types:\n\nrpm/deb\nflatpak\nsnap\nhomebrew (linuxbrew)\n\n- name: Install RPMs\n  ansible.builtin.dnf:\n    name:\n      - '@Development Tools'\n      - ansible-lint\n\nFor each package manager you use maintain a list of what you install.\nGet in the habit of updating anytime you install a new package.\nCan use commands to get a list (e.g. command history) - maintenance challenges"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#package-origin-preferences",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#package-origin-preferences",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Package Origin Preferences",
+    "text": "Package Origin Preferences\n\n\nDistro packages\nFlatpak\nHomebrew\nSnap\n\n\n\n\ndistro maintainers ensure it works on your distro\nflatpak/snap: same experience across distros (but I don’t like snap all that much personally)\nhomebrew: share with the mac folks\n\n(You might choose a different order, based on your own preferences &needs)"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#system-config---files",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#system-config---files",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "System Config - Files",
+    "text": "System Config - Files\nfiles/no-passwords.conf\nPasswordAuthentication no\nAnsible:\n- name: Disable ssh password authentication\n  become: true\n  ansible.builtin.copy:\n    src: no-passwords.conf\n    dest: /etc/ssh/sshd_config.d/no-passwords.conf\n    mode: '0600'"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#system-config---templates",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#system-config---templates",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "System Config - Templates",
+    "text": "System Config - Templates\ntemplates/sudoers-custom.j2\n{{ ansible_user_id }} ALL=(ALL) NOPASSWD: ALL\nAnsible:\n- name: Land sudoers template\n  ansible.builtin.template:\n    src: sudoers-custom.j2\n    dest: /etc/sudoers.d/sudoers-custom\n    validate: /usr/sbin/visudo -cf %s\n\nThese are generally set-and-forget things.\nRaw files and templates.\nThere are lots of modules that offer higher level of abstraction, but these go a long way."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#using-ansible-elsewhere",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#using-ansible-elsewhere",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Using Ansible Elsewhere",
+    "text": "Using Ansible Elsewhere\nansible-galaxy role install \\\n  --force \\\n  git+https://github.com/$USER/$USER-environment\nansible -K localhost -c local \\\n  -m include_role -a name=$USER-environment\n\n\n\n\n\n\nNote\n\n\nYou can apply remotely as well, see docs."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#ansible---other-capabilities",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#ansible---other-capabilities",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Ansible - Other Capabilities",
+    "text": "Ansible - Other Capabilities\n\nManage users/groups\nManage services/jobs (systemd & cron)\nExecute commands/scripts"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#chezmoi",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#chezmoi",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Chezmoi",
+    "text": "Chezmoi"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#chezmoi---why",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#chezmoi---why",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Chezmoi - Why",
+    "text": "Chezmoi - Why\n\nlighter weight\nbetter than files in a git repo\nergonomics"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#chezmoi-installation",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#chezmoi-installation",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Chezmoi Installation",
+    "text": "Chezmoi Installation\n# also pulls dotfiles if you already use chezmoi\nsh -c \"$(curl -fsLS get.chezmoi.io)\" \\\n  -- init \\\n  --apply \\\n  $GITHUB_USERNAME"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#user-config",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#user-config",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "User Config",
+    "text": "User Config\n\n\nvim vs. emacs\nvs. vscode\nvs. vscodium\n\n\n\n\n.bashrc\n.zshrc\n.gitconfig\n\n\n\nchezmoi add ~/.bashrc\nchezmoi git commit\nchezmoi git push\n\n\n\nShow of hands, do you prefer…\nI’m a bash person, myself, but shoutout to those that like zsh\ngitconfig: And sometimes you don’t edit these yourself, but they still matter."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#templates",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#templates",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Templates",
+    "text": "Templates\ndot_gitconfig.tmpl\n[user]\n  name = Kevin Howell\n  email = {{ .email }}\n[core]\n  editor = vim\n[diff]\n  tool = meld\n[init]\n  defaultBranch = main"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#tools",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#tools",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Tools",
+    "text": "Tools\nUseful code that isn’t distro packaged (yet)\n\n\n\n GitHub Releases\n\n\n\n Python Packages\n\n\n\n Node Packages"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#managing-github-releases",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#managing-github-releases",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Managing GitHub Releases",
+    "text": "Managing GitHub Releases\n~/.local/share/chezmoi/   .chezmoiexternal.toml.tmpl\n{{ $versions := (fromYaml (include \"versions.yaml\")) -}}\n[\"bin/ollama\"]\n    type = \"file\"\n    executable = true\n    url = \"https://github.com/ollama/ollama/releases/download/{{ $versions.ollama }}/ollama-linux-amd64\"\n\n\n\n\n\n\nTip\n\n\nYou can use this with renovate to get automated updates."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#managing-python-packages",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#managing-python-packages",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Managing Python Packages",
+    "text": "Managing Python Packages\n~/.local/share/chezmoi/   run_after_poetryinstall.sh\n#!/bin/bash\ncd ~/tools/python  # make sure include this in $PATH\npoetry install --no-root --sync\n\n\n\n\n\n\nNote\n\n\nCan follow a similar pattern for npm packages.\n\n\n\n\n\n\n\n\n\nTip\n\n\nYou can use this with renovate/dependabot to get automated updates."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#scripts",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#scripts",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Scripts",
+    "text": "Scripts\n\nscripts git repo (can add to $PATH)\ndirectly in dotfiles repo\n\n\n\nPrefer the git repo if you want to share maintence (e.g. team, oss-project)\nDirectly in dotfiles repo is fine too."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#using-chezmoi-elsewhere",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#using-chezmoi-elsewhere",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Using Chezmoi Elsewhere",
+    "text": "Using Chezmoi Elsewhere\nchezmoi init $username --apply"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#inspiration",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#inspiration",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Inspiration",
+    "text": "Inspiration\n\nBrowse Ansible Galaxy for roles (https://galaxy.ansible.com)\nBrowse Ansible collections docs (https://docs.ansible.com)\nSearch GitHub for topic: chezmoi (https://github.com/topics/chezmoi)\nSearch github for dotfiles repos\n\n\nAnsible Galaxy has community and partner automation for lots of things.\nTake a look at the Ansible module docs. No, really, they have lots of good examples!\nChezmoi’s default workflow encourages publishing your dotfiles to github, so there are tons of chezmoi repos out there. A lot of folks tag them with the chezmoi topic.\nNon-chezmoi dotfiles repos are useful too."
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#my-repos",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#my-repos",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "My Repos",
+    "text": "My Repos\n\nhttps://github.com/kahowell/kahowell-environment\nhttps://github.com/kahowell/dotfiles"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#red-hat-developer",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#red-hat-developer",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Red Hat Developer",
+    "text": "Red Hat Developer\n\nno-cost subscription for individuals\nfree sandbox environments\nhttps://developers.redhat.com"
+  },
+  {
+    "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#qa",
+    "href": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#qa",
+    "title": "Automating Development Environments with Ansible & Chezmoi",
+    "section": "Q&A",
+    "text": "Q&A\n\n\nThanks for attending!\n\n@kahowell@mastodon.social\nhttps://kahowell.net\n\n\n\n\n\nred.ht/SCALE2024"
+  },
+  {
+    "objectID": "posts/2025-03-01_moving_to_quarto.html",
+    "href": "posts/2025-03-01_moving_to_quarto.html",
+    "title": "Moving to Quarto",
+    "section": "",
+    "text": "I’ve grown quite fond of Quarto for doing presentations, so I’m migrating my blog from Jekyll to Quarto. A few hints for anyone who wants to do the same:\n\nYou can create directory structures for old posts that mirror any permalinks you had set in Jekyll. For example, I created a directory 2015/08 and put my post from then there, renamed to ensure the generated html file ends up with desired name (ryouri_book.html in this case).\nConfigure listings to include old content manually. See Quarto docs on YAML Listing Content for details.\nYou can use categories much the same way as Jekyll tags.\nAny content you want quarto to just copy over needs to be listed in _quarto.yml under project -&gt; resources."
+  },
+  {
+    "objectID": "bio.html",
+    "href": "bio.html",
+    "title": "bio",
+    "section": "",
+    "text": "Kevin is a Principal Software Engineer at Red Hat in Raleigh, NC, currently focused on building subscription functionality for console.redhat.com using Java, Quarkus, Spring Boot, OpenShift, and Kafka. He holds a Bachelor’s in Computer Science from the College of William and Mary, and is a Red Hat Certified Professional.\nKevin is passionate about free and open source software."
+  },
+  {
+    "objectID": "2023/09/dependabot_ignores.html",
+    "href": "2023/09/dependabot_ignores.html",
+    "title": "Dependabot Ignores",
+    "section": "",
+    "text": "We use dependabot to notify us of regular library updates.\nWe hit a confusing edge case:\n\nLong ago, dependabot picked up major version updates for libraries.\nAt the time we were not yet ready to update our code to work with these updates, so we used @dependabot ignore this major version, to keep getting minor version updates for the major version we were on. (For example, we were on quarkus 2.x and were not yet ready to move to quarkus 3.x)\nDependabot advised that updating the library independently should clear the ignore, however, this doesn’t work as advertised, and dependabot no longer advertises this.\n\nSolution:\n\nConfirm dependencies are being ignored:\n\n\nOpen the dependabot logs by navigating: Insights -&gt; Dependency Graph -&gt; Dependabot -&gt; Last checked ${timeframe}.\nLook for “Ignored version” in the update log and note what dependencies are affected.\n\n\nLocate pull requests where the ignore(s) originated:\n\n\nUse is:pr is:closed is:unmerged involves:dependabot as criteria.\n\n\nComment @dependabot reopen on the closed pull request(s).\nDependabot will reopen the pull request and clear the ignore. If the dependency has had subsequent releases, it’ll likely close the PR and open a fresh one.\n\nWe had an extra complication: we changed our branching strategy (changing our primary branch from develop to main, and dropping develop), and dependabot could not reopen the pull request because its target branch did not exist. So, we needed an extra step: recreate the old target branch temporarily."
+  },
+  {
+    "objectID": "2013/09/opengl-es-11-on-fedora-19.html",
+    "href": "2013/09/opengl-es-11-on-fedora-19.html",
+    "title": "OpenGL ES 1.1 on Fedora 19",
+    "section": "",
+    "text": "So, I’ve been tinkering with SDL2 lately; I’ve been very impressed by the number of features that have been added without changing the overall API architecture much. One of the additions that I find most impressive is the Android/iOS support.\nIn tinkering, I realized one can theoretically build with a SDL game/app with both GL and GLES backends (without a lot of platform-specific code), allowing you to write a 3D engine that works on both desktop and mobile platforms. Very cool! I have yet to dive into the differences between GL and GLES, but I have the feeling it is possible to code (for the most part) for the middle ground.\nAlong the way, I noticed that mesa includes GLES implementations. Also very cool! However, the default mesa packages on Fedora have disabled the GLES 1.1 features. A little bit of google-fu later, I find the package maintainers have chosen to disable GLES 1.1 in the build with very sound reasoning: &gt; Drop GLESv1, nothing’s using it, let’s not start\nThey basically want to discourage folks from using this dated API; you really should use GLES 2.0, as GLES 2.0 is only unavailable on a few older platforms (see http://en.wikipedia.org/wiki/OpenGL_ES#Use).\nI imagine this might have been a choice to prevent new software from appearing in Fedora which uses GLES 1.1, thereby preventing anyone from needing to maintain/support GLES 1.1 on Fedora, but I haven’t spoken with any of those folks, so I’m not certain this is the exact meaning of their reasoning.\nThere are a few use cases for having GLES 1.1 available; for example, you are developing an app for an older OS for some reason. I think if you are in a situation where you need it, you are probably smart/experienced enough to be comfortable building the mesa libs from source in order to keep GLES 1.1. My curiosity led me to try it out – notes follow.\nIt’s not difficult to build an RPM package from source; a pretty good reference for the basics is here.\nSo first, you want to install the mesa source RPM:\nyumdownloader --source mesa-libGLES-devel; rpm -i mesa-*.src.rpm\nNext, you need to install the build dependencies:\ncd ~/rpmbuild/SPECS; sudo yum-builddep mesa-libGLES-devel\nAfter that you’ll want to patch the SPEC file to build the GLES 1.1 stuff (git diff shown):\ndiff --git a/mesa.spec b/mesa.spec\nindex 40c45f5..7540fe4 100644\n--- a/mesa.spec\n+++ b/mesa.spec\n@@ -342,7 +342,7 @@ export CXXFLAGS=\"$RPM_OPT_FLAGS -fno-rtti -fno-exceptions\"\n     --enable-osmesa \\\n     --with-dri-driverdir=%{_libdir}/dri \\\n     --enable-egl \\\n-    --disable-gles1 \\\n+    --enable-gles1 \\\n     --enable-gles2 \\\n     --disable-gallium-egl \\\n     --disable-xvmc \\\n@@ -440,6 +440,9 @@ rm -rf $RPM_BUILD_ROOT\n %files libGLES\n %defattr(-,root,root,-)\n %doc docs/COPYING\n+%{_libdir}/libGLESv1_CM.so\n+%{_libdir}/libGLESv1_CM.so.1\n+%{_libdir}/libGLESv1_CM.so.1.*\n %{_libdir}/libGLESv2.so.2\n %{_libdir}/libGLESv2.so.2.*\n\n@@ -536,6 +539,11 @@ rm -rf $RPM_BUILD_ROOT\n\n %files libGLES-devel\n %defattr(-,root,root,-)\n+%dir %{_includedir}/GLES\n+%{_includedir}/GLES/egl.h\n+%{_includedir}/GLES/gl.h\n+%{_includedir}/GLES/glext.h\n+%{_includedir}/GLES/glplatform.h\n %dir %{_includedir}/GLES2\n %{_includedir}/GLES2/gl2platform.h\n %{_includedir}/GLES2/gl2.h\n@@ -544,6 +552,7 @@ rm -rf $RPM_BUILD_ROOT\n %{_includedir}/GLES3/gl3.h\n %{_includedir}/GLES3/gl3ext.h\n %{_libdir}/pkgconfig/glesv2.pc\n+%{_libdir}/pkgconfig/glesv1_cm.pc\n %{_libdir}/libGLESv2.so\n\n %files libOSMesa\nNow, build the RPMs:\nrpmbuild -ba mesa.spec\nNow, install the RPMs (architecture may differ, –force will overwrite installed packages):\ncd ../RPMS/x86_64/; sudo rpm -i --force mesa-*.rpm\nObviously, it may pay to be a little more selective with which ones you install, if you care."
+  },
+  {
+    "objectID": "2012/12/xml-fuzzergenerator-java.html",
+    "href": "2012/12/xml-fuzzergenerator-java.html",
+    "title": "XML Fuzzer/Generator (Java)",
+    "section": "",
+    "text": "I finally got around to committing my second attempt at an XML fuzzer. It is not yet complete, but may still be useful. It is licensed under the MIT license.\nhttps://github.com/kahowell/java-xmlfuzzer\nThe project uses Apache’s schema support in the XMLBeans library to read a given XSD file, and then proceeds to traverse the XSD, starting at a specified element (i.e. the root of the XML), generating (hopefully) valid XML as it reads each part of the schema.\nI realized early on that I would not be able to solve all constraint (XSD facet) combinations for a given type or element (imagine the case where a type has an enumeration with “0” and “1” and a pattern facet with the regex “[a-z]*” - unsolvable!), so I built a way for it to be extensible/flexible: the app chooses value generators based on the type, and one can provide additional generators for custom types by implementing a single, simple function for an abstract class and can then register the generator with the program. The expectation is that for sufficiently complex types, the user would simply write their own random generator. I am trying to strike a balance between two extremes - having the generators be general, and having the implementation stay simple/clean.\nThe project is a Maven project, and uses a few Apache Commons libraries. I utilized Google Guice in managing the components and value generators.\nI am going to continue to work on this project as time permits. If you’d like to participate, feel free to fork it on GitHub.\nI also hope to document the project a little better/write a little more about it. If I do, I will update this post accordingly."
+  },
+  {
+    "objectID": "2012/12/thunderbird-scripting-plugin-duckpond.html",
+    "href": "2012/12/thunderbird-scripting-plugin-duckpond.html",
+    "title": "Thunderbird Scripting Plugin (DuckPond)",
+    "section": "",
+    "text": "In my undergraduate software engineering course, Bert Cortina, Kartik Verma, and I developed a Thunderbird plugin over the course of the semester. What we developed originally started out as a scripting language for email-related tasks, but quickly evolved into a graphical workflow-based scripting system.\nEach action in the workflow is programmed as a python module, allowing infinite extensibility of the system. The model is essentially that of a pipeline: each module reads a certain type of data and passes it to the next module.\nThe system interfaces with Thunderbird through XPCOM, specifically PyXPCOM, since we were using Python.\nThe features we were able to implement by the end included:\n\nParsing entire mailboxes, or individual folders (Inbox, Sent, etc.)\nFiltering emails by regular expression\nExtracting attachments\nZipping attachments into a single zip file\n\nDuckPond is what we internally called the project. At the end of the course, we decided to release it as open source.\nThe plugin sources and binary xpi are hosted on Google Code.\nNote that the plugin does not work on newer versions of Thunderbird, since AFAICT, there is not a version of pythonext which is compatible with newer Thunderbird releases (please correct me if I’m wrong)."
+  },
+  {
+    "objectID": "2012/12/effectively-using-todos-in-eclipse.html",
+    "href": "2012/12/effectively-using-todos-in-eclipse.html",
+    "title": "Effectively Using TODOs in Eclipse",
+    "section": "",
+    "text": "I wanted to share a couple of techniques I’ve discovered for using TODOs effectively in Eclipse.\nThe Tasks view in Eclipse can show each TODO/FIXME,etc. comment that you’ve left in your code. However, by default, it is configured to only show TODO tasks. To change this, select “Configure Contents…” from the Tasks View Menu (small downward-pointing triangle).\n\n\n\nConfigure Contents Location\n\n\nTo allow all types of task comments (TODO,FIXME,etc.), uncheck the TODOs configuration. Also from here, you can create multiple configurations that allow you to filter tasks by different criteria. I use the configurations as a set of filters all applied together (think logical AND) (check “Show items that match all the configurations checked below”).\nThe first filter I usually create is one to filter out all tasks not related to the currently selected project - just change “Scope” to “On any element in the same project.”\nThe “Description” setting is also very handy. I’ve started tagging TODOs with tags (like [GUI] or [noclue]), and then I create configurations that will show only those tags, or filter them out.\n\n\n\nGUI filter\n\n\nWith the drop-down set to “contains”, you get a filter that will only show a particular tag.\n\n\n\nHide GUI filter\n\n\nWith it set to “doesn’t contain”, you get a filter that hides a particular tag."
+  },
+  {
+    "objectID": "2012/12/refactoring-can-cause-bugs.html",
+    "href": "2012/12/refactoring-can-cause-bugs.html",
+    "title": "(Careless) Refactoring Can Cause Bugs",
+    "section": "",
+    "text": "While coding today, I had a realization: refactoring can introduce subtle bugs.\nI’m not just talking about variable name changes that break logic where the variable names are referenced external to the code (ex. request parameters in a web application).\nI’ll give a quick example. Here’s a code snippet before inline refactoring:\nboolean saidHi = false;\nfor (int i = 0; i &lt; 2; i++) {\n    String message = saidHi ? \"Hello again\" : \"Hello\";\n    saidHi = true;\n    System.out.println(message);\n}\nThis will output:\nHello\nHello again\nIf you then apply inline to the message variable because, let’s say, you like it a little more succinct, then you get this:\nboolean saidHi = false;\nfor (int i = 0; i &lt; 2; i++) {\n    saidHi = true;\n    System.out.println(saidHi ? \"Hello again\" : \"Hello\");\n}\nThis will output:\nHello again\nHello again\nA full class with the function both ways:\nclass BadRefactor {\n\n    public static void main(String[] args) {\n        beforeRefactor();\n        System.out.println(\"--------\"); // print separator\n        afterRefactor();\n    }\n\n    public static void beforeRefactor() {\n        boolean saidHi = false;\n        for (int i = 0; i &lt; 2; i++) {\n            String message = saidHi ? \"Hello again\" : \"Hello\";\n            saidHi = true;\n            System.out.println(message);\n        }\n    }\n\n    public static void afterRefactor() {\n        boolean saidHi = false;\n        for (int i = 0; i &lt; 2; i++) {\n            saidHi = true;\n            System.out.println(saidHi ? \"Hello again\" : \"Hello\");\n        }\n    }\n}\nThis was using the inline refactoring in Eclipse Juno SR1.\nSo be careful when using refactoring; if using Eclipse, use the preview feature to make sure there are no unwanted side effects before applying.\nHave you thought of, or run into any cases where refactoring messed things up in a subtle way? Feel free to comment."
+  },
+  {
+    "objectID": "2012/12/xml-fuzzer-first-attempt.html",
+    "href": "2012/12/xml-fuzzer-first-attempt.html",
+    "title": "XML Fuzzer (Python)",
+    "section": "",
+    "text": "A first quick attempt an a program that will take as input an XSD and produce a file with random data that conforms to the XSD. Written in a couple of weekends in Python; it is incomplete in that it does not have generators for all of the XSD defined primitive data types. Whether it works for a particular XSD is kind of hit or miss. Available at GitHub. Licensed under GPLv3 with an additional clause to keep my name on it.\nI used this as a way to familiarize myself with some Python 3 features as well, especially dictionary comprehensions, so some of the code may look out-of-place to someone who codes for Python 2.x.\nSoon, I will be posting/uploading a newer, better (less naive) attempt in a different programming language."
+  },
+  {
+    "objectID": "2013/02/physfs-c-physicsfs-wrapper.html",
+    "href": "2013/02/physfs-c-physicsfs-wrapper.html",
+    "title": "PhysFS++ (C++ PhysicsFS Wrapper)",
+    "section": "",
+    "text": "Last night I committed a small project to GitHub - PhysFS++. PhysFS++ provides C++ wrappers around Ryan C. Gordon’s PhysicsFS. I licensed these wrappers under the zlib license, same as PhysicsFS (at the time of writing). It wraps PHYSFS_FILE* in C++ streams (both istream and ostream).\nWhile I’m certain this has been done before, I decided to do myself from scratch as a learning experience, and because I could find no PhysicsFS C++ wrappers with clear licensing.\nI do not guarantee the wrappers are perfect, but a smoke test showed that they work.\nSee the README at https://github.com/kahowell/physfs-cpp for more info."
+  },
+  {
+    "objectID": "2015/08/ryouri_book.html",
+    "href": "2015/08/ryouri_book.html",
+    "title": "Ryouri Book",
+    "section": "",
+    "text": "I’ve been tinkering with Apache Cordova lately. After looking through F-Droid’s repo, and not finding a whole lot of recipe apps, I decided to build a recipe collection app.\nThe name is from the Japanese word 料理 which means cooking or cuisine; the romaji (romanized spelling) for this is “ryouri”.\nI pushed it out to GitHub, in the hope that folks will find it interesting enough to take a look and potentially contribute."
+  },
+  {
+    "objectID": "2024/12/recovering_from_bad_dnf_update.html",
+    "href": "2024/12/recovering_from_bad_dnf_update.html",
+    "title": "Recovering from a Bad DNF Update",
+    "section": "",
+    "text": "Yesterday, I decided to do a dnf update before I signed off work for the day. I figured it would be a nice way to wrap up my day. Then, unfortunately, btrfs and dnf had other ideas.\nFirst, I noticed that the dnf update stalled while upgrading small RPMs. I thought, that’s weird. It eventually erred out with a cpio error.\nIt stalled on the next package, and I got impatient, and powered off my laptop manually, knowing I’d have a mess to clean up.\nWhen I got back around to it, my display manager wasn’t functional, so I ended up needing to boot into recovery with rd.break and manually disable it.\nOnce I got into the system itself, I looked to see what the issue was, and noticed that df -h reported 0 free space on my btrfs filesystem. I thought this was odd, because I thought I had plenty of free space prior to the update attempt, and dnf itself actually checks free space before allowing an update to happen.\nTypical cleanup, for example, deleting files from ~/Downloads didn’t help.\nTurns out that I ran out of metadata blocks, and my filesystem effectively went from having plenty of free space to none when this happened.\nFollowing advice from a post from Marc Merlin’s blog, I first attempted a few different invocations of the btrfs balance command, but I wasn’t successful until I added a 1G ramdisk to the filesystem, which btrfs used exclusively for additional metadata blocks.\nRoughly the commands I used were:\ntruncate -s 1G /tmp/rescue.btrfs\nLOOP=$(losetup --show -f /tmp/rescue.btrfs)\nbtrfs device add $LOOP /\nbtrfs balance start / --full-balance\nbtrfs device remove $LOOP\nAfter this completed, I had a working filesystem again, but metadata usage was still pretty high, so I decided to look for subvolumes I wasn’t using anymore. I was surprised to find that moby-engine/docker had created a bunch of subvolumes at some point. So deleting all container images:\ndocker rmi $(docker images -q)\nhelped a lot.\nAfter that, I had to clean up a partial RPM transaction.\nThe following steps worked well:\ndnf distro-sync\ndnf remove --duplicates\ndnf reinstall '*'\nAfter doing that and rebooting, I had a usable system again, yay!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "blog",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\n\n\n\n\nMar 1, 2025\n\n\nMoving to Quarto\n\n\n\n\nDec 12, 2024\n\n\nRecovering from a Bad DNF Update\n\n\n\n\nSep 1, 2023\n\n\nDependabot Ignores\n\n\n\n\nAug 2, 2015\n\n\nRyouri Book\n\n\n\n\nSep 21, 2013\n\n\nOpenGL ES 1.1 on Fedora 19\n\n\n\n\nFeb 22, 2013\n\n\nPhysFS++ (C++ PhysicsFS Wrapper)\n\n\n\n\nDec 15, 2012\n\n\nXML Fuzzer/Generator (Java)\n\n\n\n\nDec 13, 2012\n\n\nEffectively Using TODOs in Eclipse\n\n\n\n\nDec 12, 2012\n\n\n(Careless) Refactoring Can Cause Bugs\n\n\n\n\nDec 5, 2012\n\n\nThunderbird Scripting Plugin (DuckPond)\n\n\n\n\nDec 5, 2012\n\n\nXML Fuzzer (Python)\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#agenda",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#agenda",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "Agenda",
+    "text": "Agenda\n\n\n\nKubernetes primer\nExploring resources without diagrams\nk8sviz\nkubectl graph\nAdvice\n\n\n\n\n\nFirst I’ll frame why diagrams are useful for kubernetes and then we’ll look at a couple of tools for diagramming k8s:\n\nk8sviz\nkubectl graph\n\nAnd then I’ll wrap up with some general thoughts."
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#about-me",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#about-me",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "About Me",
+    "text": "About Me\n\n\n\nPrincipal Software Engineer at Red Hat\nconsole.redhat.com subscriptions Tech Lead\nRaleigh, NC\n@kahowell@mastodon.social\nhttps://kahowell.net\n\n\n\n\nFirst up a bit about me. Java, Quarkus, OpenShift, Tekton"
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#kubernetes-primer",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#kubernetes-primer",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "Kubernetes Primer",
+    "text": "Kubernetes Primer\n\n\n\nDeclarative interface\nAPI resources\nDistributed workloads\nContainer-centric\n\n\n\n\n\n\nIn kubernetes you declare the desired state of things and then kubernetes is responsible to “make it so”.\nDeclarations are in the language of API resources. Every resource has a group (namespace), kind, and name.\nBecause kubernetes is all about running fault-tolerant, distributed workloads, it’s often necessary to have multiple instances of a given resource.\nKubernetes is container-centric. Often, we work at an abstraction level above individual containers though.\n\nTo elaborate on the last couple of points, distributed workloads and layers of abstraction increase the cognitive complexity of dealing with Kubernetes applications."
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#abstractions-in-kubernetes",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#abstractions-in-kubernetes",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "Abstractions in Kubernetes",
+    "text": "Abstractions in Kubernetes\n\n\n\n\n\n\n\ng\n\n\n\nDeployment\n\nDeployment\n\n\n\nReplicaSet\n\nReplicaSet\n\n\n\nDeployment-&gt;ReplicaSet\n\n\n\n\n\nPod\n\nPod\n\n\n\nReplicaSet-&gt;Pod\n\n\n\n\n\nContainer\n\nContainer\n\n\n\nPod-&gt;Container\n\n\n\n\n\n\n\n\n\n\n\n\nDeployment is a common resource type, responsible for running a workload and performing rolling updates.\nDeployments are implemented with one or more replicasets, responsible for keeping a number of copies of a workload running.\nReplicasets schedule pods, one or more containers running together on the same node."
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#navigating-relationships---cli",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#navigating-relationships---cli",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "Navigating Relationships - CLI",
+    "text": "Navigating Relationships - CLI\nGet owner:\nkubectl get $type/$name \\\n  -o template \\\n  --template \\\n  '{{(index .metadata.ownerReferences 0).kind}}/'\\\n'{{(index .metadata.ownerReferences 0).name}}'\n\n… and repeat\n\n\nIt’s one thing to conceptually understand those abstractions, and another to explore them in a running application.\nFirst, we’ll talk about the how relationships are available through the API (and consequently the CLI), every resource optionally has an ownerReferences field in the metadata that points to its parent or parents.\nYou can query this for a given resource by using this kubectl command."
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#navigating-relationships---gui",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#navigating-relationships---gui",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "Navigating Relationships - GUI",
+    "text": "Navigating Relationships - GUI\n\nOwner Links in OpenShift/OKD\nIf you’re using a Kubernetes service with a web UI, you can often follow the trail using hyperlinks."
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#the-pattern-for-diagrams",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#the-pattern-for-diagrams",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "The Pattern for Diagrams",
+    "text": "The Pattern for Diagrams\n\nQuery Resources\nDraw a graph\n\nk8s resources, relationships\nas nodes and edges\n\n\n\nGiven we’re navigating a graph, it’s hopefully obvious that we can draw a diagram of that graph, and that it can be automated.\nConceptually, it’s pretty simple:\n\nquery some resources\nlay them out in a graph."
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#k8sviz",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#k8sviz",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "k8sviz",
+    "text": "k8sviz\nhttps://github.com/mkimuram/k8sviz\n\nInstallation\ngit clone https://github.com/mkimuram/k8sviz\ncd k8sviz\nmake build  # requires golang\ncp -R icons bin/\n\n\nUsage\n# output a graphviz source file\nbin/k8sviz -n keycloak-system -t dot -o keycloak.dot\n# generate a png image\nbin/k8sviz -n keycloak-system -t png -o keycloak.png"
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#k8sviz---results",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#k8sviz---results",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "k8sviz - Results",
+    "text": "k8sviz - Results\n\nkeycloak diagram\nThis works, but it’s hard to read a tall diagram in a wide presentation."
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#k8sviz---results-edited",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#k8sviz---results-edited",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "k8sviz - Results (edited)",
+    "text": "k8sviz - Results (edited)\n\nkeycloak diagram - edited for LR layout & bigger font\nThere we go!\nHere you can see at a glance: * A deployment for the keycloak operator * StatefulSets for Postgres and an example keycloak deployment * the replicasets, pods, services, and ingress instances underneath those objects"
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#k8sviz---ideas-for-improvment",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#k8sviz---ideas-for-improvment",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "k8sviz - Ideas for Improvment",
+    "text": "k8sviz - Ideas for Improvment\n\n\npackaging\nlayout, font options\nfilters\ncustom resource support\noffline support (helm charts, kustomize)\n\n\n\n\nIt would be ideal if this were packaged in Fedora or Ubuntu\nIf there were better layout and font options/defaults, would be helpful\nSometimes you don’t need to see all the resources\nSometimes you have all you need locally to get a representation of an application in k8s"
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#kubectl-graph",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#kubectl-graph",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "kubectl-graph",
+    "text": "kubectl-graph\nhttps://github.com/steveteuber/kubectl-graph\n\nInstallation\n# assumes krew already installed\n# https://krew.sigs.k8s.io/docs/user-guide/setup/install/\nkubectl krew install graph\n\n\nUsage\n# kubectl graph $type0,$type1,...\nkubectl graph keycloak,deployments,replicasets,statefulsets"
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#kubectl-graph---graphviz",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#kubectl-graph---graphviz",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "kubectl-graph - Graphviz",
+    "text": "kubectl-graph - Graphviz\n\n\n\n\n\n\n\n\n\n\n\n\n\nc7468ee8-d08e-10f0-6c57-e8c5a2b7b319\n\n\napi.crc.t...\n\n\n\n\n\n60a85292-052f-210d-178a-3829b4f551bb\n\n\nkeycloak-...\n\n\n\n\n\nc7468ee8-d08e-10f0-6c57-e8c5a2b7b319-&gt;60a85292-052f-210d-178a-3829b4f551bb\n\n\n\nNamespace\n\n\n\n\n\nf9b274dc-00d1-4767-954f-3f9c343f5547\n\n\nexample-kc\n\n\n\n\n\n60a85292-052f-210d-178a-3829b4f551bb-&gt;f9b274dc-00d1-4767-954f-3f9c343f5547\n\n\n\nKeycloak\n\n\n\n\n\n8d1b02ce-8247-449b-888c-5ab3770e7f07\n\n\nkeycloak-...\n\n\n\n\n\n60a85292-052f-210d-178a-3829b4f551bb-&gt;8d1b02ce-8247-449b-888c-5ab3770e7f07\n\n\n\nDeployment\n\n\n\n\n\n97945256-8cc4-4e25-9f24-dfe2eac17b48\n\n\npostgresq...\n\n\n\n\n\n60a85292-052f-210d-178a-3829b4f551bb-&gt;97945256-8cc4-4e25-9f24-dfe2eac17b48\n\n\n\nStatefulSet\n\n\n\n\n\n6bbe31ab-4d6b-4911-9dae-a311bae1dc87\n\n\nexample-kc\n\n\n\n\n\nf9b274dc-00d1-4767-954f-3f9c343f5547-&gt;6bbe31ab-4d6b-4911-9dae-a311bae1dc87\n\n\n\nStatefulSet\n\n\n\n\n\n5e4e0c9f-db23-447a-8e91-0e3e2d6b0b20\n\n\nkeycloak-...\n\n\n\n\n\n8d1b02ce-8247-449b-888c-5ab3770e7f07-&gt;5e4e0c9f-db23-447a-8e91-0e3e2d6b0b20\n\n\n\nReplicaSet\n\n\n\n\n\n\n kubectl graph rendering of keycloak resources."
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#kubectl-graph---mermaid-edited-for-lr-layout",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#kubectl-graph---mermaid-edited-for-lr-layout",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "kubectl-graph - Mermaid (edited for LR layout)",
+    "text": "kubectl-graph - Mermaid (edited for LR layout)\n\n\n\n\n\ngraph LR\n  60a85292-052f-210d-178a-3829b4f551bb((keycloak-...)):::Namespace\n  5e4e0c9f-db23-447a-8e91-0e3e2d6b0b20((keycloak-...)):::ReplicaSet\n  a3e07832-474c-4042-983e-d098a760fb4d((example-kc-0)):::Pod\n  6bbe31ab-4d6b-4911-9dae-a311bae1dc87((example-kc)):::StatefulSet\n  e07c0e8b-1c22-bfad-3ecd-a1cff0450321((keycloak)):::Container\n  8e77e145-c83d-2ddb-6123-72cf7664cd35((keycloak-...)):::Container\n  c7468ee8-d08e-10f0-6c57-e8c5a2b7b319((api.crc.t...)):::Cluster\n  8d1b02ce-8247-449b-888c-5ab3770e7f07((keycloak-...)):::Deployment\n  0ba2caef-915f-41d8-b742-0c18cbaae490((keycloak-...)):::Pod\n  c5bf27c6-b79a-48f1-b1e6-bf3392b9ed8a((postgresq...)):::Pod\n  97945256-8cc4-4e25-9f24-dfe2eac17b48((postgresq...)):::StatefulSet\n  93893b75-19b3-dcd9-6301-416922554914((postgresq...)):::Container\n  f9b274dc-00d1-4767-954f-3f9c343f5547((example-kc)):::Keycloak\n  0ba2caef-915f-41d8-b742-0c18cbaae490 -- Container --&gt; 8e77e145-c83d-2ddb-6123-72cf7664cd35\n  97945256-8cc4-4e25-9f24-dfe2eac17b48 -- Pod --&gt; c5bf27c6-b79a-48f1-b1e6-bf3392b9ed8a\n  c5bf27c6-b79a-48f1-b1e6-bf3392b9ed8a -- Container --&gt; 93893b75-19b3-dcd9-6301-416922554914\n  c7468ee8-d08e-10f0-6c57-e8c5a2b7b319 -- Namespace --&gt; 60a85292-052f-210d-178a-3829b4f551bb\n  60a85292-052f-210d-178a-3829b4f551bb -- Deployment --&gt; 8d1b02ce-8247-449b-888c-5ab3770e7f07\n  60a85292-052f-210d-178a-3829b4f551bb -- Keycloak --&gt; f9b274dc-00d1-4767-954f-3f9c343f5547\n  8d1b02ce-8247-449b-888c-5ab3770e7f07 -- ReplicaSet --&gt; 5e4e0c9f-db23-447a-8e91-0e3e2d6b0b20\n  6bbe31ab-4d6b-4911-9dae-a311bae1dc87 -- Pod --&gt; a3e07832-474c-4042-983e-d098a760fb4d\n  a3e07832-474c-4042-983e-d098a760fb4d -- Container --&gt; e07c0e8b-1c22-bfad-3ecd-a1cff0450321\n  5e4e0c9f-db23-447a-8e91-0e3e2d6b0b20 -- Pod --&gt; 0ba2caef-915f-41d8-b742-0c18cbaae490\n  f9b274dc-00d1-4767-954f-3f9c343f5547 -- StatefulSet --&gt; 6bbe31ab-4d6b-4911-9dae-a311bae1dc87\n  60a85292-052f-210d-178a-3829b4f551bb -- StatefulSet --&gt; 97945256-8cc4-4e25-9f24-dfe2eac17b48"
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#kubectl-graph---ideas-for-improvment",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#kubectl-graph---ideas-for-improvment",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "kubectl-graph - Ideas for Improvment",
+    "text": "kubectl-graph - Ideas for Improvment\n\n\nalternative packaging (rpm, deb)\nicons\nlayout, font options\nedge choices\n\n\n\n\nIt would be ideal if this were packaged in Fedora or Ubuntu\nIf there were better layout and font options/defaults, would be helpful\nSometimes you don’t need to see all the resources\nUsing resource types as edges is an interesting choice for more dense diagrams, but I’d like options."
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#advice",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#advice",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "Advice",
+    "text": "Advice\n\n\nDon’t be afraid to edit diagrams\nTry multiple tools/formats"
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#red-hat-developer",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#red-hat-developer",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "Red Hat Developer",
+    "text": "Red Hat Developer\n\nno-cost subscription for individuals\nfree sandbox environments\nhttps://developers.redhat.com"
+  },
+  {
+    "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#qa",
+    "href": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#qa",
+    "title": "Visualizing Kubernetes with Generated Diagrams",
+    "section": "Q&A",
+    "text": "Q&A\n\n\nThanks for attending!\n\n@kahowell@mastodon.social\nhttps://kahowell.net\n\n\n\n\n\n\n\nNote\n\n\nTitle slide Photo by orbtal media on Unsplash\n\n\n\n\n\n\n\nred.ht/SCALE2024"
+  },
+  {
+    "objectID": "presentations/index.html",
+    "href": "presentations/index.html",
+    "title": "presentations",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nVideo\n\n\n\n\n\n\nMar 16, 2024\n\n\nAutomating Development Environments with Ansible & Chezmoi\n\n\n(Video) \n\n\n\n\nMar 15, 2024\n\n\nVisualizing Kubernetes with Generated Diagrams\n\n\n(Video) \n\n\n\n\nJul 11, 2023\n\n\nTaking SQL to the PromQL (co-presented with Lindsey Burnett)\n\n\n(Video) \n\n\n\n\nJun 12, 2022\n\n\nCommunicating Software Architecture with Open Source Tools\n\n\n(Video) \n\n\n\n\nJun 13, 2020\n\n\nAutomation 101 w/ Ansible\n\n\n \n\n\n\n\nJun 16, 2019\n\n\nJenkins 101\n\n\n(Video) \n\n\n\n\nFeb 23, 2017\n\n\npython-for-android\n\n\n \n\n\n\n\n\nNo matching items"
+  }
+]
