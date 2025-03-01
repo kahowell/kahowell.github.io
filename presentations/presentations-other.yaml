@@ -1,0 +1,26 @@
+---
+- title: Taking SQL to the PromQL (co-presented with Lindsey Burnett)
+  path: "Taking SQL to the PromQL.pdf"
+  date: 2023-07-11
+  video: |
+    [(Video)](https://www.youtube.com/watch?v=8fHwHUxE2EY)
+
+- title: Communicating Software Architecture with Open Source Tools
+  date: 2022-06-12
+  path: 2022-06-12_diagramming/index.html
+  video: |
+    [(Video)](https://www.youtube.com/watch?v=42OVQuB79tQ)
+
+- title: Automation 101 w/ Ansible
+  date: 2020-06-13
+  path: 2020-06-13_automation_101_ansible/automation_101_ansible.slides.html
+
+- title: Jenkins 101
+  date: 2019-06-16
+  path: 2019-06-16_jenkins_101/2019-06-16_jenkins_101.slides.html
+  video: |
+    [(Video)](https://www.youtube.com/watch?v=_kwZqlLZrUo)
+
+- title: python-for-android
+  date: 2017-02-23
+  path: 2017-02-23_python-for-android/2017-02-23_python-for-android.slides.html

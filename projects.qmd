@@ -1,0 +1,19 @@
+---
+title: projects
+listing:
+  type: table
+  fields:
+    - title
+    - code
+  field-display-names:
+    code: Code
+  contents:
+    - projects.yaml
+    - "2012"
+    - "2013"
+    - "2015"
+    - "2023"
+    - "2024"
+  include:
+    categories: project
+---

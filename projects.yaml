@@ -1,0 +1,11 @@
+---
+- title: Nutrition w/ Pyodide
+  path: /nutrition
+  code: |
+    [GitHub](https://github.com/kahowell/nutrition)
+  categories: [project]
+- title: PS1 Memory Card Editor
+  path: /ps1-memory-card-editor
+  code: |
+    [GitHub](https://github.com/kahowell/ps1-memory-card-editor)
+  categories: [project]

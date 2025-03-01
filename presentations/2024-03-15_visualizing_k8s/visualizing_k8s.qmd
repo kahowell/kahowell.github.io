@@ -3,14 +3,17 @@ title: Visualizing Kubernetes with Generated Diagrams
 author:
   name: Kevin Howell
   affiliation: Red Hat
+date: 2024-03-15
 format:
   revealjs:
     theme: [default, custom.scss]
     slide-number: c/t
     code-line-numbers: false
-title-slide-attributes: 
+title-slide-attributes:
   data-background-image: orbtal-media-Esq0ovRY-Zs-unsplash.jpg
   data-background-opacity: "0.4"
+video: |
+  [(Video)](https://www.youtube.com/watch?v=GEeodHEOmvA)
 ---
 
 ## Agenda
@@ -208,7 +211,7 @@ Here you can see at a glance:
 * Sometimes you have all you need locally to get a representation of an application in k8s
 :::
 
-## kubectl-graph 
+## kubectl-graph
 
 https://github.com/steveteuber/kubectl-graph
 

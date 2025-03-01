@@ -3,14 +3,17 @@ title: Automating Development Environments with Ansible & Chezmoi
 author:
   name: Kevin Howell
   affiliation: Red Hat
+date: 2024-03-16
 format:
   revealjs:
     theme: [default, custom.scss]
     slide-number: c/t
     code-line-numbers: false
-title-slide-attributes: 
+title-slide-attributes:
   data-background-image: ansible_code.png
   data-background-opacity: "0.4"
+video: |
+  [(Video)](https://www.youtube.com/watch?v=P4nI1VhoN2Y)
 ---
 
 ## Agenda

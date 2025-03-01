@@ -1,0 +1,38 @@
+---
+project:
+  type: website
+  resources:
+    - keybase.txt
+    - resume.pdf
+    - "presentations/2017-02-23_python-for-android"
+    - "presentations/2019-06-16_jenkins_101"
+    - "presentations/2020-06-13_automation_101_ansible"
+    - "presentations/2022-06-12_diagramming"
+  render:
+    - "*.qmd"
+    - "!*.ipynb"
+
+website:
+  title: "Kevin Howell"
+  navbar:
+    left:
+      - href: index.qmd
+        text: home
+      - bio.qmd
+      - projects.qmd
+      - presentations/index.qmd
+  page-footer:
+    left: © Kevin Howell. Opinions are my own and not the views of my employer.
+    right:
+      - icon: github
+        href: https://github.com/kahowell
+      - icon: mastodon
+        href: https://mastodon.social/@kahowell
+
+format:
+  html:
+    theme:
+      - flatly
+      - brand
+    css: styles.css
+    toc: true

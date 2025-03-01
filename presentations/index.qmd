@@ -1,0 +1,17 @@
+---
+title: presentations
+listing:
+  type: table
+  contents:
+    - "*.qmd"
+    - "*/*.qmd"
+    - presentations-other.yaml
+  fields:
+    - date
+    - title
+    - video
+  field-display-names:
+    video: Video
+  sort:
+    - date desc
+---

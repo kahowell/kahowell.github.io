@@ -1,9 +1,0 @@
----
-name: Kevin Howell
-markdown: kramdown
-highlighter: rouge
-nav_pages:
-  home: "/"
-  bio: "/bio"
-  projects: "/projects"
-  presentations: "/presentations"
