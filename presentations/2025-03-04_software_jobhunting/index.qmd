@@ -1,0 +1,392 @@
+---
+title: Navigating Today's Tech Market
+author:
+  name: Kevin Howell '11
+  affiliation: Principal Software Engineer, Red Hat
+date: 2025-03-04
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    slide-number: c/t
+    code-line-numbers: false
+title-slide-attributes:
+  data-background-image: mick-haupt-tJefy_Vu7Po-unsplash.jpg
+  data-background-opacity: "0.4"
+---
+## About Me
+
+:::: {.columns}
+
+::: {.column width="70%"}
+
+W&M CS '11
+
+Principal Software Engineer at Red Hat
+
+Raleigh, NC
+
+[@kahowell@mastodon.social](https://mastodon.social/@kahowell)
+
+[https://kahowell.net](https://kahowell.net)
+
+:::
+
+::: {.headshot .column width="30%"}
+
+![](headshot_2021_cropped.jpg)
+
+:::
+
+::::
+
+::: {.callout-note}
+
+These are my own opinions and experiences, and not those of my employer.
+
+:::
+
+## My Career
+
+```{mermaid}
+timeline
+    2011 : W&M '11
+         : CGI Federal - Fairfax, VA
+    2013 : CGI Federal - Durham, NC
+         : US Government Shutdown
+         : TekSystems Contract for Red Hat IT
+    2014 : Red Hat IT, Full-Time
+    2016 : Red Hat Engineering
+```
+
+## Agenda
+
+- Trends
+- Resumes
+- Networking
+- Job Hunting
+- Interviews
+- Resources
+
+# Trends
+
+## Artificial Intelligence
+
+Both in early 2025:
+
+- Jan 21 - US to invest $500 billion
+- Feb 11 - EU plans to invest €200 billion
+
+::: {.notes}
+
+Around 200 billion USD at time of writing
+In fact, I'm moving to an AI team at Red Hat
+
+:::
+
+## Tough Market
+
+- Applicant to job ratio
+- Inflation
+- Interest rates
+- Investment in AI
+- Experienced engineers are moving less
+- Layoffs, hiring freezes
+
+::: {.notes}
+
+I just went through a job search
+Effective interest rates used to be 0% or close to 0% for software
+
+:::
+
+## Cycles
+
+- Smartphone Apps
+- Cloud Computing
+- Big Data
+- AI
+
+# Resumes
+
+## Skills
+
+- Artificial Intelligence
+- Problem Solving
+- Collaboration
+
+## Side Projects
+
+- Shows initiative
+- Potential interview topic
+
+## Open Source Involvement
+
+Examples:
+
+- [python.org/community](https://python.org/community)
+- [https://docs.fedoraproject.org/en-US/project/join/](https://docs.fedoraproject.org/en-US/project/join/)
+
+### GitHub
+
+- `good first issue` label on GitHub projects
+- `contributing.md`
+
+::: {.notes}
+
+- Often have a community slack or discourse instance
+- job openings are sometimes posted early
+- recognition in community can lead to opportunities
+
+:::
+
+
+## Microcredentials
+
+- [Credly](https://credly.com)
+- Free & Paid Trainings
+
+::: {.notes}
+
+- can search for microcredentials for specific skills
+- find a reputable training source
+- lots of free trainings
+
+:::
+
+## Collaboration
+
+- Side-projects
+- Open-source involvement
+- Non-technical community involvement
+
+::: {.notes}
+
+- side-projects are more fun with a friend
+- non-tech can give another dimension
+
+:::
+
+## Certifications
+
+- Not expected for early career
+- Many companies pay for professional development
+- Discounts
+- Non-technical (e.g. project management) can give you an edge
+
+::: {.notes}
+
+- student discounts
+- sales
+- they've been beneficial for me for career progression
+
+:::
+
+## Resume Tips
+
+- One page
+- Emphasize skills related to the job
+- Consider checking your resume against AI (e.g.
+  [https://enhancv.com/resources/resume-checker/](https://enhancv.com/resources/resume-checker/))
+
+# Networking
+
+## Meetups
+
+- User groups
+- Virtual meetups
+- Have a job/need a job
+- Learn what opportunities exist in an area
+
+## Conferences
+
+- Job boards
+- The "hallway" track
+- Free or cheap
+- Practice public speaking
+
+::: {.notes}
+
+- student rates
+- volunteer
+
+:::
+
+## Conferences - Suggestions
+
+- AllThingsOpen - Raleigh, NC
+- Southern California Linux Expo (SCALE) - Pasadena, CA
+- Seattle GNU/Linux Conference (SeaGL) - Seattle, WA
+
+## Referrals
+
+- Contact before applying
+- Contact after applying
+
+::: {.notes}
+
+- before is better, sometimes referrals use a separate link
+- after is good too, often can be rectified
+- referrers can sometimes talk with hiring manager
+- referrers can sometimes check detailed status of your application
+
+:::
+
+## Mentorship
+
+- Formal mentorship through employer
+- Formal mentorship programs
+- Informal mentorship
+
+# Job Hunting
+
+## Recruiting Cycles
+
+- Recruiting cycles are tied to budget cycles
+- Cycles tend to be quarterly
+- Summer and late fall are slower
+
+::: {.notes}
+
+- quarterly due to financial reporting requirements
+- vacations & holidays
+
+:::
+
+## Internships
+
+- Mostly late fall/early spring
+- But don't give up looking
+
+## Roles
+
+- Backend Engineer
+- Frontend Engineer
+- Fullstack Engineer
+- Technical Writer
+- Data Engineer
+- AI Engineer
+- Quality Engineer
+
+## Job Boards at Conferences
+
+- Employers recruit at conferences
+
+## Saved Searches
+
+1. Look for jobs on a company's website
+2. Set up a "saved search" or "alert"
+
+## Down-leveling
+
+- Sometimes employers compromise
+- Sometimes bringing in fresh talent is valuable in itself
+
+::: {.notes}
+
+Can be because of:
+
+- lack of talent with the desired experience
+- budget considerations
+
+:::
+
+## Consider All Industries
+
+- Healthcare/Life Sciences
+- Finance
+- Retail
+- Technology
+- Non-Profit
+- Academia
+
+## Consider Contract-to-Hire
+
+- Work as a contractor for 6 months to year
+- Then convert to full-time or find something else
+
+::: {.notes}
+
+Benefits are tied to the contracting company
+
+:::
+
+# Interviews
+
+## Embrace In-Person/Hybrid
+
+- Early career
+- Mentorship
+
+::: {.notes}
+
+Make it clear you're okay with in-person.
+Companies often find on-boarding/mentorship easier in-person.
+
+:::
+
+## Practice Coding Interviews
+
+- HackerRank
+- Advent of Code
+- Beware of interviewing scams
+
+## Show Continuous Learning
+
+- Talk about microlearning or side-projects
+
+## Do NOT Lie
+
+- Or make up answers
+- Instead admit you don't know, relate to something you *do* know
+
+# Resources
+
+## Skills
+
+- [Linux Foundation](https://training.linuxfoundation.org/)
+- [edX](https://www.edx.org/)
+- [Coursera](https://www.coursera.org/)
+- [O'Reilly](https://go.oreilly.com) - free through W&M Library
+- [LinkedIn Learning](https://learning.linkedin.com) - free through W&M Library
+- [ACM Skills Bundle](https://learning.acm.org/skills-bundle) - O'Reilly and PluralSight - $175 annual
+- [roadmap.sh](https://roadmap.sh)
+
+::: {.notes}
+
+ACM:
+$100 for membership
+$75 for skills bundle
+
+check your local library too!
+
+employers pay for some of these services for professional development too
+
+:::
+
+## Jobs
+
+- Don't limit to LinkedIn
+- [opensourcejobhub.com](https://opensourcejobhub.com)
+- [idealist.org](https://idealist.org)
+- Check company sites
+
+::: {.notes}
+
+Some employers do not post to LinkedIn at all (e.g. Apple)
+
+:::
+
+## Other Good Resources
+
+- [levels.fyi](https://levels.fyi): titles at companies
+- [progression.fyi](https://progression.fyi): career progression at various companies
+- [survey.stackoverflow.co](https://survey.stackoverflow.co/): tech job trends
+- [pragmaticengineer.com](https://pragmaticengineer.com): substack newsletter & book on software career
+
+## Thank You
+
+::: {.callout-note}
+
+Title Slide Photo by [Mick Haupt](https://unsplash.com/@rocinante_11?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/silver-and-black-round-analog-watch-tJefy_Vu7Po?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+
+:::

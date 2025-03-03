@@ -1,0 +1,42 @@
+/*-- scss:defaults --*/
+.headshot img {
+    border-radius: 100%;
+}
+
+.custom-logo img {
+  display: inline;
+  height: 3.3rem;
+  margin: 0 !important;
+}
+
+.border {
+  margin: 5px;
+  padding: 1rem;
+  border-radius: 20px;
+  border: 2px solid #212121;
+}
+
+.border2 {
+  margin: 5px;
+  padding: 1rem;
+}
+
+.border2 p {
+  text-align: center;
+}
+
+.border2 img {
+  height: 15rem;
+  margin: auto;
+}
+
+.border p {
+  text-align: center;
+}
+
+.border img {
+  height: 15rem;
+  margin: auto;
+}
+
+/*-- scss:rules --*/
