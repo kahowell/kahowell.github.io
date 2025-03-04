@@ -222,10 +222,20 @@ Through the local python meetup, met RENCI folks, financial sector, etc.
 
 ## Conferences
 
+::: {.column width="80%"}
+
 - Job boards
 - The "hallway" track
 - Free or cheap
 - Practice public speaking
+
+:::
+
+::: {.column width="20%"}
+
+![Kevin @ SCALE](IMG_20250304_174507.jpg)
+
+:::
 
 ::: {.notes}
 
