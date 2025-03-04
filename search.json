@@ -18,7 +18,7 @@
     "href": "presentations/2025-03-04_software_jobhunting/index.html#my-career",
     "title": "Navigating Today’s Tech Market",
     "section": "My Career",
-    "text": "My Career\n\n\n\n\n\ntimeline\n    2011 : W&M '11\n         : CGI Federal - Fairfax, VA\n    2013 : CGI Federal - Durham, NC\n         : US Government Shutdown\n         : TekSystems Contract for Red Hat IT\n    2014 : Red Hat IT, Full-Time\n    2016 : Red Hat Engineering"
+    "text": "My Career\n\n\n\n\n\n\ntimeline\n    2011 : W&M '11\n         : CGI Federal - Fairfax, VA\n    2013 : CGI Federal - Durham, NC\n         : US Government Shutdown\n         : TekSystems Contract for Red Hat IT\n    2014 : Red Hat IT, Full-Time\n    2016 : Red Hat Engineering\n\n\n\n\n\n\n\n\n\n\nKevin at Red Hat NHO"
   },
   {
     "objectID": "presentations/2025-03-04_software_jobhunting/index.html#agenda",
@@ -46,7 +46,7 @@
     "href": "presentations/2025-03-04_software_jobhunting/index.html#cycles",
     "title": "Navigating Today’s Tech Market",
     "section": "Cycles",
-    "text": "Cycles\n\nSmartphone Apps\nCloud Computing\nBig Data\nAI"
+    "text": "Cycles\n\nSmartphone Apps\nCloud Computing\nBig Data\nAI\n\n\nStory: smartphone app development"
   },
   {
     "objectID": "presentations/2025-03-04_software_jobhunting/index.html#skills",
@@ -67,7 +67,7 @@
     "href": "presentations/2025-03-04_software_jobhunting/index.html#open-source-involvement",
     "title": "Navigating Today’s Tech Market",
     "section": "Open Source Involvement",
-    "text": "Open Source Involvement\nExamples:\n\npython.org/community\nhttps://docs.fedoraproject.org/en-US/project/join/\n\nGitHub\n\ngood first issue label on GitHub projects\ncontributing.md\n\n\n\nOften have a community slack or discourse instance\njob openings are sometimes posted early\nrecognition in community can lead to opportunities"
+    "text": "Open Source Involvement\nExamples:\n\npython.org/community\nhttps://docs.fedoraproject.org/en-US/project/join/\n\nGitHub\n\ngood first issue label on GitHub projects\ncontributing.md\n\n\n\nOften have a community slack or discourse instance\njob openings are sometimes posted early\nrecognition in community can lead to opportunities\nstory: contributors"
   },
   {
     "objectID": "presentations/2025-03-04_software_jobhunting/index.html#microcredentials",
@@ -102,7 +102,7 @@
     "href": "presentations/2025-03-04_software_jobhunting/index.html#meetups",
     "title": "Navigating Today’s Tech Market",
     "section": "Meetups",
-    "text": "Meetups\n\nUser groups\nVirtual meetups\nHave a job/need a job\nLearn what opportunities exist in an area"
+    "text": "Meetups\n\nUser groups\nVirtual meetups\nHave a job/need a job\nLearn what opportunities exist in an area\n\n\nThrough the local python meetup, met RENCI folks, financial sector, etc."
   },
   {
     "objectID": "presentations/2025-03-04_software_jobhunting/index.html#conferences",
@@ -124,13 +124,6 @@
     "title": "Navigating Today’s Tech Market",
     "section": "Referrals",
     "text": "Referrals\n\nContact before applying\nContact after applying\n\n\n\nbefore is better, sometimes referrals use a separate link\nafter is good too, often can be rectified\nreferrers can sometimes talk with hiring manager\nreferrers can sometimes check detailed status of your application"
-  },
-  {
-    "objectID": "presentations/2025-03-04_software_jobhunting/index.html#mentorship",
-    "href": "presentations/2025-03-04_software_jobhunting/index.html#mentorship",
-    "title": "Navigating Today’s Tech Market",
-    "section": "Mentorship",
-    "text": "Mentorship\n\nFormal mentorship through employer\nFormal mentorship programs\nInformal mentorship"
   },
   {
     "objectID": "presentations/2025-03-04_software_jobhunting/index.html#recruiting-cycles",
@@ -221,7 +214,7 @@
     "href": "presentations/2025-03-04_software_jobhunting/index.html#skills-1",
     "title": "Navigating Today’s Tech Market",
     "section": "Skills",
-    "text": "Skills\n\nLinux Foundation\nedX\nCoursera\nO’Reilly - free through W&M Library\nLinkedIn Learning - free through W&M Library\nACM Skills Bundle - O’Reilly and PluralSight - $175 annual\nroadmap.sh\n\n\nACM: $100 for membership $75 for skills bundle\ncheck your local library too!\nemployers pay for some of these services for professional development too"
+    "text": "Skills\n\nLinux Foundation\nedX\nCoursera\nO’Reilly - free through W&M Library\nLinkedIn Learning - free through W&M Library\nACM Skills Bundle - O’Reilly and PluralSight - $175 annual\nroadmap.sh\n\n\nACM: $100 for membership $75 for skills bundle\ncheck your local library too!\nemployers pay for some of these services for professional development too\ndata engineering skills for AI and backend"
   },
   {
     "objectID": "presentations/2025-03-04_software_jobhunting/index.html#jobs",
@@ -238,11 +231,11 @@
     "text": "Other Good Resources\n\nlevels.fyi: titles at companies\nprogression.fyi: career progression at various companies\nsurvey.stackoverflow.co: tech job trends\npragmaticengineer.com: substack newsletter & book on software career"
   },
   {
-    "objectID": "presentations/2025-03-04_software_jobhunting/index.html#thank-you",
-    "href": "presentations/2025-03-04_software_jobhunting/index.html#thank-you",
+    "objectID": "presentations/2025-03-04_software_jobhunting/index.html#image-credits",
+    "href": "presentations/2025-03-04_software_jobhunting/index.html#image-credits",
     "title": "Navigating Today’s Tech Market",
-    "section": "Thank You",
-    "text": "Thank You\n\n\n\n\n\n\nNote\n\n\nTitle Slide Photo by Mick Haupt on Unsplash"
+    "section": "Image Credits",
+    "text": "Image Credits\n\nTitle Slide Photo by Mick Haupt on Unsplash\nTrends Photo by Markus Winkler on Unsplash\nResume Photo by Van Tay Media on Unsplash\nHandshake Photo by Cytonn Photography on Unsplash\nBinoculars Photo by Ran Berkovich on Unsplash\nInterview Photo by Christina @ wocintechchat.com on Unsplash\nBookshelf Photo by Pawel Czerwinski on Unsplash"
   },
   {
     "objectID": "presentations/2024-03-15_visualizing_k8s/visualizing_k8s.html#agenda",
@@ -459,7 +452,7 @@
     "href": "posts/2025-03-01_moving_to_quarto.html",
     "title": "Moving to Quarto",
     "section": "",
-    "text": "I’ve grown quite fond of Quarto for doing presentations, so I’m migrating my blog from Jekyll to Quarto. A few hints for anyone who wants to do the same:\n\nYou can create directory structures for old posts that mirror any permalinks you had set in Jekyll. For example, I created a directory 2015/08 and put my post from then there, renamed to ensure the generated html file ends up with desired name (ryouri_book.html in this case).\nConfigure listings to include old content manually. See Quarto docs on YAML Listing Content for details.\nYou can use categories much the same way as Jekyll tags.\nAny content you want quarto to just copy over needs to be listed in _quarto.yml under project -&gt; resources."
+    "text": "I’ve grown quite fond of Quarto for doing presentations, so I’m migrating my blog from Jekyll to Quarto. A few hints for anyone who wants to do the same:\n\nYou can create directory structures for old posts that mirror any permalinks you had set in Jekyll. For example, I created a directory 2015/08 and put my post from then there, renamed to ensure the generated html file ends up with desired name (ryouri_book.html in this case).\nConfigure listings to include old content manually. See Quarto docs on YAML Listing Content for details.\nYou can use categories much the same way as Jekyll tags.\nAny non-Quarto content you want Quarto to just copy over needs to be listed in _quarto.yml under project -&gt; resources."
   },
   {
     "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#agenda",
