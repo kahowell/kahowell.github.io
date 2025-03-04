@@ -9,4 +9,4 @@ I've grown quite fond of Quarto for doing presentations, so I'm migrating my blo
 1. You can create directory structures for old posts that mirror any permalinks you had set in Jekyll. For example, I created a directory `2015/08` and put my post from then there, renamed to ensure the generated `html` file ends up with desired name (`ryouri_book.html` in this case).
 2. Configure listings to include old content manually. See [Quarto docs on YAML Listing Content](https://quarto.org/docs/websites/website-listings.html#yaml-listing-content) for details.
 3. You can use `categories` much the same way as Jekyll `tags`.
-4. Any content you want quarto to just copy over needs to be listed in `_quarto.yml` under `project` -> `resources`.
+4. Any non-Quarto content you want Quarto to just copy over needs to be listed in `_quarto.yml` under `project` -> `resources`.

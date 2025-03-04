@@ -47,6 +47,8 @@ These are my own opinions and experiences, and not those of my employer.
 
 ## My Career
 
+::: {.column width="80%"}
+
 ```{mermaid}
 timeline
     2011 : W&M '11
@@ -58,6 +60,14 @@ timeline
     2016 : Red Hat Engineering
 ```
 
+:::
+
+::: {.column width="20%"}
+
+![Kevin at Red Hat NHO](redhat_newhire.jpg)
+
+:::
+
 ## Agenda
 
 - Trends
@@ -67,7 +77,7 @@ timeline
 - Interviews
 - Resources
 
-# Trends
+# Trends {background-image="markus-winkler-IrRbSND5EUc-unsplash.jpg" background-opacity="0.4"}
 
 ## Artificial Intelligence
 
@@ -106,7 +116,13 @@ Effective interest rates used to be 0% or close to 0% for software
 - Big Data
 - AI
 
-# Resumes
+::: {.notes}
+
+Story: smartphone app development
+
+:::
+
+# Resumes {background-image="van-tay-media-TFFn3BYLc5s-unsplash.jpg" background-opacity="0.4"}
 
 ## Skills
 
@@ -136,6 +152,7 @@ Examples:
 - Often have a community slack or discourse instance
 - job openings are sometimes posted early
 - recognition in community can lead to opportunities
+- story: contributors
 
 :::
 
@@ -188,7 +205,7 @@ Examples:
 - Consider checking your resume against AI (e.g.
   [https://enhancv.com/resources/resume-checker/](https://enhancv.com/resources/resume-checker/))
 
-# Networking
+# Networking {background-image="cytonn-photography-vWchRczcQwM-unsplash.jpg" background-opacity="0.4"}
 
 ## Meetups
 
@@ -196,6 +213,12 @@ Examples:
 - Virtual meetups
 - Have a job/need a job
 - Learn what opportunities exist in an area
+
+::: {.notes}
+
+Through the local python meetup, met RENCI folks, financial sector, etc.
+
+:::
 
 ## Conferences
 
@@ -213,9 +236,9 @@ Examples:
 
 ## Conferences - Suggestions
 
-- AllThingsOpen - Raleigh, NC
-- Southern California Linux Expo (SCALE) - Pasadena, CA
-- Seattle GNU/Linux Conference (SeaGL) - Seattle, WA
+- [AllThingsOpen](https://allthingsopen.org) - Raleigh, NC
+- [Southern California Linux Expo (SCALE)](https://www.socallinuxexpo.org) - Pasadena, CA
+- [Seattle GNU/Linux Conference (SeaGL)](https://seagl.org) - Seattle, WA
 
 ## Referrals
 
@@ -231,13 +254,7 @@ Examples:
 
 :::
 
-## Mentorship
-
-- Formal mentorship through employer
-- Formal mentorship programs
-- Informal mentorship
-
-# Job Hunting
+# Job Hunting {background-image="ran-berkovich-kSLNVacFehs-unsplash.jpg" background-opacity="0.4"}
 
 ## Recruiting Cycles
 
@@ -310,7 +327,7 @@ Benefits are tied to the contracting company
 
 :::
 
-# Interviews
+# Interviews {background-image="christina-wocintechchat-com-eF7HN40WbAQ-unsplash.jpg" background-opacity="0.4"}
 
 ## Embrace In-Person/Hybrid
 
@@ -339,7 +356,7 @@ Companies often find on-boarding/mentorship easier in-person.
 - Or make up answers
 - Instead admit you don't know, relate to something you *do* know
 
-# Resources
+# Resources {background-image="pawel-czerwinski-BAiRfbt1HRE-unsplash.jpg" background-opacity="0.4"}
 
 ## Skills
 
@@ -360,6 +377,8 @@ $75 for skills bundle
 check your local library too!
 
 employers pay for some of these services for professional development too
+
+data engineering skills for AI and backend
 
 :::
 
@@ -383,10 +402,14 @@ Some employers do not post to LinkedIn at all (e.g. Apple)
 - [survey.stackoverflow.co](https://survey.stackoverflow.co/): tech job trends
 - [pragmaticengineer.com](https://pragmaticengineer.com): substack newsletter & book on software career
 
-## Thank You
+# Thank You
 
-::: {.callout-note}
+## Image Credits
 
-Title Slide Photo by [Mick Haupt](https://unsplash.com/@rocinante_11?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/silver-and-black-round-analog-watch-tJefy_Vu7Po?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
-
-:::
+- Title Slide Photo by [Mick Haupt](https://unsplash.com/@rocinante_11?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/silver-and-black-round-analog-watch-tJefy_Vu7Po?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- Trends Photo by [Markus Winkler](https://unsplash.com/@markuswinkler?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/black-and-silver-laptop-computer-IrRbSND5EUc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- Resume Photo by [Van Tay Media](https://unsplash.com/@vantaymedia?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/person-wearing-black-coat-close-up-photography-TFFn3BYLc5s?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- Handshake Photo by [Cytonn Photography](https://unsplash.com/@cytonn_photography?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/two-person-handshaking-vWchRczcQwM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- Binoculars Photo by [Ran Berkovich](https://unsplash.com/@berko?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/close-up-selective-focus-photo-of-black-binoculars-kSLNVacFehs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- Interview Photo by [Christina @ wocintechchat.com](https://unsplash.com/@wocintechchat?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/two-women-sitting-on-chair-eF7HN40WbAQ?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- Bookshelf Photo by [Pawel Czerwinski](https://unsplash.com/@pawel_czerwinski?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/four-brown-wooden-bookshelves-with-books-BAiRfbt1HRE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
