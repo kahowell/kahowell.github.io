@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.42">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="Kevin Howell">
   <meta name="dcterms.date" content="2024-03-16">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -30,8 +36,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +49,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -95,7 +102,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-f3fc8c3d0ea9e2e751bba8d931492dc1.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-6402c62ff814c4bd8494437af0f9b42e.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -198,7 +205,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Kevin Howell 
+Kevin Howell
 </div>
         <p class="quarto-title-affiliation">
             Red Hat
@@ -527,12 +534,10 @@ Kevin Howell
 <section id="base-os-install" class="slide level2">
 <h2>Base OS Install</h2>
 <p>Just install and accept defaults.</p>
-<div>
 <ul>
 <li class="fragment">… vs Kickstart/unattended install</li>
 <li class="fragment">… vs Custom Install Image</li>
 </ul>
-</div>
 <aside class="notes">
 <p>Or you could automate but: * need to maintain it * need to put credentials in a file somewhere (ew!)</p>
 <p>Or you could do a custom install but: * maintenance again!</p>
@@ -562,46 +567,46 @@ Kevin Howell
 </section>
 <section id="ansible-installation" class="slide level2">
 <h2>Ansible Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">dnf</span> install <span class="at">-y</span> ansible</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">dnf</span> install <span class="at">-y</span> ansible</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <p>for Ubuntu</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install <span class="at">-y</span> ansible</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">apt</span> install <span class="at">-y</span> ansible</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img data-src="Ansible-Community-Logo-RGB-Black.png" class="absolute" style="bottom: 0px; right: 0px; width: 20%; "></p>
 </section>
 <section id="basic-ansible-setup" class="slide level2">
 <h2>Basic Ansible Setup</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># go to a standard role directory</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># go to a standard role directory</span></span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> ~/.ansible/roles<span class="kw">;</span> <span class="bu">cd</span> ~/.ansible/roles</span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># create a role</span></span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ansible-galaxy</span> role init <span class="va">$USER</span>-environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ansible-galaxy</span> role init <span class="va">$USER</span>-environment</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ansible-role-contents" class="slide level2">
 <h2>Ansible Role Contents</h2>
-<div class="sourceCode" id="cb4" data-code-line-numbers="3,9-10,11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="ex">├──</span> defaults</span>
-<span id="cb4-2"><a></a><span class="ex">│&nbsp;&nbsp;</span> └── main.yml</span>
-<span id="cb4-3"><a></a><span class="ex">├──</span> files</span>
-<span id="cb4-4"><a></a><span class="ex">├──</span> handlers</span>
-<span id="cb4-5"><a></a><span class="ex">│&nbsp;&nbsp;</span> └── main.yml</span>
-<span id="cb4-6"><a></a><span class="ex">├──</span> meta</span>
-<span id="cb4-7"><a></a><span class="ex">│&nbsp;&nbsp;</span> └── main.yml</span>
-<span id="cb4-8"><a></a><span class="ex">├──</span> README.md</span>
-<span id="cb4-9"><a></a><span class="ex">├──</span> tasks</span>
-<span id="cb4-10"><a></a><span class="ex">│&nbsp;&nbsp;</span> └── main.yml</span>
-<span id="cb4-11"><a></a><span class="ex">├──</span> templates</span>
-<span id="cb4-12"><a></a><span class="ex">├──</span> tests</span>
-<span id="cb4-13"><a></a><span class="ex">│&nbsp;&nbsp;</span> ├── inventory</span>
-<span id="cb4-14"><a></a><span class="ex">│&nbsp;&nbsp;</span> └── test.yml</span>
-<span id="cb4-15"><a></a><span class="ex">└──</span> vars</span>
-<span id="cb4-16"><a></a>    <span class="ex">└──</span> main.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-code-line-numbers="3,9-10,11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-label="1"></a><span class="ex">├──</span> defaults</span>
+<span id="cb4-2"><a aria-label="2"></a><span class="ex">│&nbsp;&nbsp;</span> └── main.yml</span>
+<span id="cb4-3"><a aria-label="3"></a><span class="ex">├──</span> files</span>
+<span id="cb4-4"><a aria-label="4"></a><span class="ex">├──</span> handlers</span>
+<span id="cb4-5"><a aria-label="5"></a><span class="ex">│&nbsp;&nbsp;</span> └── main.yml</span>
+<span id="cb4-6"><a aria-label="6"></a><span class="ex">├──</span> meta</span>
+<span id="cb4-7"><a aria-label="7"></a><span class="ex">│&nbsp;&nbsp;</span> └── main.yml</span>
+<span id="cb4-8"><a aria-label="8"></a><span class="ex">├──</span> README.md</span>
+<span id="cb4-9"><a aria-label="9"></a><span class="ex">├──</span> tasks</span>
+<span id="cb4-10"><a aria-label="10"></a><span class="ex">│&nbsp;&nbsp;</span> └── main.yml</span>
+<span id="cb4-11"><a aria-label="11"></a><span class="ex">├──</span> templates</span>
+<span id="cb4-12"><a aria-label="12"></a><span class="ex">├──</span> tests</span>
+<span id="cb4-13"><a aria-label="13"></a><span class="ex">│&nbsp;&nbsp;</span> ├── inventory</span>
+<span id="cb4-14"><a aria-label="14"></a><span class="ex">│&nbsp;&nbsp;</span> └── test.yml</span>
+<span id="cb4-15"><a aria-label="15"></a><span class="ex">└──</span> vars</span>
+<span id="cb4-16"><a aria-label="16"></a>    <span class="ex">└──</span> main.yml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ansible---basic-workflow" class="slide level2">
 <h2>Ansible - Basic Workflow</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># update it to do some stuff</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># update it to do some stuff</span></span>
 <span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="va">$EDITOR</span> tasks/main.yml</span>
 <span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># run it - lazy shortcut</span></span>
 <span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ansible</span> <span class="at">-K</span> localhost <span class="at">-c</span> local <span class="dt">\</span></span>
-<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">-m</span> include_role <span class="at">-a</span> name=<span class="va">$USER</span>-environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">-m</span> include_role <span class="at">-a</span> name=<span class="va">$USER</span>-environment</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>(and commit/push to a repo for sharing)</p>
 <aside class="notes">
 <p>There are other ways to run the ansible code against machines, but this works locally (and y’all can lookup how to run Ansible against remote machines - I believe in you!)</p>
@@ -627,11 +632,11 @@ Kevin Howell
 <li>snap</li>
 <li>homebrew (linuxbrew)</li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install RPMs</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Install RPMs</span></span>
 <span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">ansible.builtin.dnf</span><span class="kw">:</span></span>
 <span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span></span>
 <span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">'@Development Tools'</span></span>
-<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ansible-lint</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ansible-lint</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <p>For each package manager you use maintain a list of what you install.</p>
 <p>Get in the habit of updating anytime you install a new package.</p>
@@ -651,14 +656,12 @@ Kevin Howell
 </section>
 <section id="package-origin-preferences" class="slide level2">
 <h2>Package Origin Preferences</h2>
-<div>
 <ul>
 <li class="fragment">Distro packages</li>
 <li class="fragment">Flatpak</li>
 <li class="fragment">Homebrew</li>
 <li class="fragment">Snap</li>
 </ul>
-</div>
 <aside class="notes">
 <ul>
 <li>distro maintainers ensure it works on your distro</li>
@@ -684,12 +687,12 @@ Kevin Howell
 <p><code>files/no-passwords.conf</code></p>
 <pre class="sshd_config"><code>PasswordAuthentication no</code></pre>
 <p>Ansible:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Disable ssh password authentication</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Disable ssh password authentication</span></span>
 <span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">become</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">ansible.builtin.copy</span><span class="kw">:</span></span>
 <span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">src</span><span class="kw">:</span><span class="at"> no-passwords.conf</span></span>
 <span id="cb8-5"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dest</span><span class="kw">:</span><span class="at"> /etc/ssh/sshd_config.d/no-passwords.conf</span></span>
-<span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> </span><span class="st">'0600'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">mode</span><span class="kw">:</span><span class="at"> </span><span class="st">'0600'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img data-src="Ansible-Community-Logo-RGB-Black.png" class="absolute" style="bottom: 0px; right: 0px; width: 20%; "></p>
 </section>
 <section id="system-config---templates" class="slide level2">
@@ -697,11 +700,11 @@ Kevin Howell
 <p><code>templates/sudoers-custom.j2</code></p>
 <pre class="sudoers"><code>{{ ansible_user_id }} ALL=(ALL) NOPASSWD: ALL</code></pre>
 <p>Ansible:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Land sudoers template</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Land sudoers template</span></span>
 <span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">ansible.builtin.template</span><span class="kw">:</span></span>
 <span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">src</span><span class="kw">:</span><span class="at"> sudoers-custom.j2</span></span>
 <span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dest</span><span class="kw">:</span><span class="at"> /etc/sudoers.d/sudoers-custom</span></span>
-<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">validate</span><span class="kw">:</span><span class="at"> /usr/sbin/visudo -cf %s</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">validate</span><span class="kw">:</span><span class="at"> /usr/sbin/visudo -cf %s</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <p>These are generally set-and-forget things.</p>
 <p>Raw files and templates.</p>
@@ -721,11 +724,11 @@ Kevin Howell
 </section>
 <section id="using-ansible-elsewhere" class="slide level2">
 <h2>Using Ansible Elsewhere</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ansible-galaxy</span> role install <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ansible-galaxy</span> role install <span class="dt">\</span></span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">--force</span> <span class="dt">\</span></span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>  git+https://github.com/<span class="va">$USER</span>/<span class="va">$USER</span>-environment</span>
 <span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">ansible</span> <span class="at">-K</span> localhost <span class="at">-c</span> local <span class="dt">\</span></span>
-<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">-m</span> include_role <span class="at">-a</span> name=<span class="va">$USER</span>-environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">-m</span> include_role <span class="at">-a</span> name=<span class="va">$USER</span>-environment</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -764,33 +767,29 @@ Kevin Howell
 </section>
 <section id="chezmoi-installation" class="slide level2">
 <h2>Chezmoi Installation</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># also pulls dotfiles if you already use chezmoi</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># also pulls dotfiles if you already use chezmoi</span></span>
 <span id="cb12-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sh</span> <span class="at">-c</span> <span class="st">"</span><span class="va">$(</span><span class="ex">curl</span> <span class="at">-fsLS</span> get.chezmoi.io<span class="va">)</span><span class="st">"</span> <span class="dt">\</span></span>
 <span id="cb12-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">--</span> init <span class="dt">\</span></span>
 <span id="cb12-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">--apply</span> <span class="dt">\</span></span>
-<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="va">$GITHUB_USERNAME</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="va">$GITHUB_USERNAME</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img data-src="logo-256px.png" class="absolute" style="bottom: 0px; right: 0px; width: 20%; "></p>
 </section>
 <section id="user-config" class="slide level2">
 <h2>User Config</h2>
-<div>
 <ul>
 <li class="fragment">vim vs.&nbsp;emacs</li>
 <li class="fragment">vs.&nbsp;vscode</li>
 <li class="fragment">vs.&nbsp;vscodium</li>
 </ul>
-</div>
-<div>
 <ul>
 <li class="fragment">.bashrc</li>
 <li class="fragment">.zshrc</li>
 <li class="fragment">.gitconfig</li>
 </ul>
-</div>
 <div class="fragment">
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">chezmoi</span> add ~/.bashrc</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">chezmoi</span> add ~/.bashrc</span>
 <span id="cb13-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">chezmoi</span> git commit</span>
-<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">chezmoi</span> git push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">chezmoi</span> git push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img data-src="logo-256px.png" class="absolute" style="bottom: 0px; right: 0px; width: 20%; "></p>
 <aside class="notes">
@@ -812,7 +811,7 @@ Kevin Howell
 <section id="templates" class="slide level2">
 <h2>Templates</h2>
 <p><code>dot_gitconfig.tmpl</code></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">[user]</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode ini code-with-copy"><code class="sourceCode ini"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="kw">[user]</span></span>
 <span id="cb14-2"><a aria-hidden="true" tabindex="-1"></a><span class="dt">  name </span><span class="ot">=</span><span class="st"> Kevin Howell</span></span>
 <span id="cb14-3"><a aria-hidden="true" tabindex="-1"></a><span class="dt">  email </span><span class="ot">=</span><span class="st"> {{ .email }}</span></span>
 <span id="cb14-4"><a aria-hidden="true" tabindex="-1"></a><span class="kw">[core]</span></span>
@@ -820,7 +819,7 @@ Kevin Howell
 <span id="cb14-6"><a aria-hidden="true" tabindex="-1"></a><span class="kw">[diff]</span></span>
 <span id="cb14-7"><a aria-hidden="true" tabindex="-1"></a><span class="dt">  tool </span><span class="ot">=</span><span class="st"> meld</span></span>
 <span id="cb14-8"><a aria-hidden="true" tabindex="-1"></a><span class="kw">[init]</span></span>
-<span id="cb14-9"><a aria-hidden="true" tabindex="-1"></a><span class="dt">  defaultBranch </span><span class="ot">=</span><span class="st"> main</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-9"><a aria-hidden="true" tabindex="-1"></a><span class="dt">  defaultBranch </span><span class="ot">=</span><span class="st"> main</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img data-src="logo-256px.png" class="absolute" style="bottom: 0px; right: 0px; width: 20%; "></p>
 </section>
 <section id="tools" class="slide level2">
@@ -845,11 +844,11 @@ Kevin Howell
 <section id="managing-github-releases" class="slide level2">
 <h2>Managing GitHub Releases</h2>
 <p><code>~/.local/share/chezmoi/   .chezmoiexternal.toml.tmpl</code></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="er">{{</span> <span class="er">$</span><span class="dt">versions</span> <span class="er">:</span><span class="op">=</span> <span class="er">(</span><span class="dt">fromYaml</span> <span class="er">(</span><span class="dt">include</span> <span class="dt">"versions.yaml"</span><span class="er">))</span> <span class="dt">-</span><span class="er">}}</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode toml code-with-copy"><code class="sourceCode toml"><span id="cb15-1"><a aria-hidden="true" tabindex="-1"></a><span class="er">{{</span> <span class="er">$</span><span class="dt">versions</span> <span class="er">:</span><span class="op">=</span> <span class="er">(</span><span class="dt">fromYaml</span> <span class="er">(</span><span class="dt">include</span> <span class="dt">"versions.yaml"</span><span class="er">))</span> <span class="dt">-</span><span class="er">}}</span></span>
 <span id="cb15-2"><a aria-hidden="true" tabindex="-1"></a><span class="kw">["</span><span class="dt">bin/ollama"</span><span class="kw">]</span></span>
 <span id="cb15-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="dt">type</span> <span class="op">=</span> <span class="st">"file"</span></span>
 <span id="cb15-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="dt">executable</span> <span class="op">=</span> <span class="cn">true</span></span>
-<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="dt">url</span> <span class="op">=</span> <span class="st">"https://github.com/ollama/ollama/releases/download/{{ $versions.ollama }}/ollama-linux-amd64"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="dt">url</span> <span class="op">=</span> <span class="st">"https://github.com/ollama/ollama/releases/download/{{ $versions.ollama }}/ollama-linux-amd64"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -868,9 +867,9 @@ Kevin Howell
 <section id="managing-python-packages" class="slide level2">
 <h2>Managing Python Packages</h2>
 <p><code>~/.local/share/chezmoi/   run_after_poetryinstall.sh</code></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/tools/python  <span class="co"># make sure include this in $PATH</span></span>
-<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> install <span class="at">--no-root</span> <span class="at">--sync</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">poetry</span> install <span class="at">--no-root</span> <span class="at">--sync</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -923,7 +922,7 @@ Kevin Howell
 </section>
 <section id="using-chezmoi-elsewhere" class="slide level2">
 <h2>Using Chezmoi Elsewhere</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">chezmoi</span> init <span class="va">$username</span> <span class="at">--apply</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">chezmoi</span> init <span class="va">$username</span> <span class="at">--apply</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img data-src="logo-256px.png" class="absolute" style="bottom: 0px; right: 0px; width: 20%; "></p>
 </section>
 <section id="inspiration" class="slide level2">
@@ -1175,7 +1174,7 @@ Kevin Howell
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1202,190 +1201,173 @@ Kevin Howell
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/kahowell\.net");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/kahowell\.net");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>

@@ -6,8 +6,8 @@
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.6.42">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.19">
 
   <meta name="author" content="Kevin Howell">
   <meta name="dcterms.date" content="2024-03-15">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -30,8 +36,9 @@
       vertical-align: middle;
     }
     /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +49,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -95,7 +102,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-8304cc0b0893848b43daeaa23d5b41e9.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-56f568a2dd6e1711f670074b530099c1.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -201,7 +208,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Kevin Howell 
+Kevin Howell
 </div>
         <p class="quarto-title-affiliation">
             Red Hat
@@ -386,11 +393,11 @@ Kevin Howell
 <section id="navigating-relationships---cli" class="slide level2">
 <h2>Navigating Relationships - CLI</h2>
 <p>Get owner:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">kubectl</span> get <span class="va">$type</span>/<span class="va">$name</span> <span class="dt">\</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">kubectl</span> get <span class="va">$type</span>/<span class="va">$name</span> <span class="dt">\</span></span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">-o</span> template <span class="dt">\</span></span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">--template</span> <span class="dt">\</span></span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">'{{(index .metadata.ownerReferences 0).kind}}/'</span><span class="dt">\</span></span>
-<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a><span class="st">'{{(index .metadata.ownerReferences 0).name}}'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a><span class="st">'{{(index .metadata.ownerReferences 0).name}}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="fragment">
 <p>… and repeat</p>
 </div>
@@ -461,17 +468,17 @@ Kevin Howell
 <p>https://github.com/mkimuram/k8sviz</p>
 <div class="fragment">
 <h3 id="installation">Installation</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/mkimuram/k8sviz</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/mkimuram/k8sviz</span>
 <span id="cb2-2"><a aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> k8sviz</span>
 <span id="cb2-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> build  <span class="co"># requires golang</span></span>
-<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-R</span> icons bin/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> <span class="at">-R</span> icons bin/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <h3 id="usage">Usage</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># output a graphviz source file</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># output a graphviz source file</span></span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">bin/k8sviz</span> <span class="at">-n</span> keycloak-system <span class="at">-t</span> dot <span class="at">-o</span> keycloak.dot</span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="co"># generate a png image</span></span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">bin/k8sviz</span> <span class="at">-n</span> keycloak-system <span class="at">-t</span> png <span class="at">-o</span> keycloak.png</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="ex">bin/k8sviz</span> <span class="at">-n</span> keycloak-system <span class="at">-t</span> png <span class="at">-o</span> keycloak.png</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="k8sviz---results" class="slide level2">
@@ -511,7 +518,6 @@ Kevin Howell
 </section>
 <section id="k8sviz---ideas-for-improvment" class="slide level2">
 <h2>k8sviz - Ideas for Improvment</h2>
-<div>
 <ul>
 <li class="fragment">packaging</li>
 <li class="fragment">layout, font options</li>
@@ -519,7 +525,6 @@ Kevin Howell
 <li class="fragment">custom resource support</li>
 <li class="fragment">offline support (helm charts, kustomize)</li>
 </ul>
-</div>
 <aside class="notes">
 <ul>
 <li>It would be ideal if this were packaged in Fedora or Ubuntu</li>
@@ -544,14 +549,14 @@ Kevin Howell
 <p>https://github.com/steveteuber/kubectl-graph</p>
 <div class="fragment">
 <h3 id="installation-1">Installation</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># assumes krew already installed</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># assumes krew already installed</span></span>
 <span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="co"># https://krew.sigs.k8s.io/docs/user-guide/setup/install/</span></span>
-<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">kubectl</span> krew install graph</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a><span class="ex">kubectl</span> krew install graph</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <h3 id="usage-1">Usage</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># kubectl graph $type0,$type1,...</span></span>
-<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">kubectl</span> graph keycloak,deployments,replicasets,statefulsets</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># kubectl graph $type0,$type1,...</span></span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="ex">kubectl</span> graph keycloak,deployments,replicasets,statefulsets</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="kubectl-graph---graphviz" class="slide level2">
@@ -814,14 +819,12 @@ ReplicaSet[keycloak-operator-6bff9cf6f]">
 </section>
 <section id="kubectl-graph---ideas-for-improvment" class="slide level2">
 <h2>kubectl-graph - Ideas for Improvment</h2>
-<div>
 <ul>
 <li class="fragment">alternative packaging (rpm, deb)</li>
 <li class="fragment">icons</li>
 <li class="fragment">layout, font options</li>
 <li class="fragment">edge choices</li>
 </ul>
-</div>
 <aside class="notes">
 <ul>
 <li>It would be ideal if this were packaged in Fedora or Ubuntu</li>
@@ -843,12 +846,10 @@ ReplicaSet[keycloak-operator-6bff9cf6f]">
 </section>
 <section id="advice" class="slide level2">
 <h2>Advice</h2>
-<div>
 <ul>
 <li class="fragment">Don’t be afraid to edit diagrams</li>
 <li class="fragment">Try multiple tools/formats</li>
 </ul>
-</div>
 </section>
 <section id="red-hat-developer" class="slide level2">
 <h2>Red Hat Developer</h2>
@@ -1080,7 +1081,7 @@ ReplicaSet[keycloak-operator-6bff9cf6f]">
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1107,190 +1108,173 @@ ReplicaSet[keycloak-operator-6bff9cf6f]">
       });
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-      const toggleBodyColorMode = (bsSheetEl) => {
-        const mode = bsSheetEl.getAttribute("data-mode");
-        const bodyEl = window.document.querySelector("body");
-        if (mode === "dark") {
-          bodyEl.classList.add("quarto-dark");
-          bodyEl.classList.remove("quarto-light");
-        } else {
-          bodyEl.classList.add("quarto-light");
-          bodyEl.classList.remove("quarto-dark");
-        }
-      }
-      const toggleBodyColorPrimary = () => {
-        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-        if (bsSheetEl) {
-          toggleBodyColorMode(bsSheetEl);
-        }
-      }
-      toggleBodyColorPrimary();  
-      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-      tabsets.forEach(function(tabset) {
-        const tabby = new Tabby('#' + tabset.id);
-      });
-      const isCodeAnnotation = (el) => {
-        for (const clz of el.classList) {
-          if (clz.startsWith('code-annotation-')) {                     
-            return true;
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
           }
+          return false;
         }
-        return false;
-      }
-      const onCopySuccess = function(e) {
-        // button target
-        const button = e.trigger;
-        // don't keep focus
-        button.blur();
-        // flash "checked"
-        button.classList.add('code-copy-button-checked');
-        var currentTitle = button.getAttribute("title");
-        button.setAttribute("title", "Copied!");
-        let tooltip;
-        if (window.bootstrap) {
-          button.setAttribute("data-bs-toggle", "tooltip");
-          button.setAttribute("data-bs-placement", "left");
-          button.setAttribute("data-bs-title", "Copied!");
-          tooltip = new bootstrap.Tooltip(button, 
-            { trigger: "manual", 
-              customClass: "code-copy-button-tooltip",
-              offset: [0, -8]});
-          tooltip.show();    
-        }
-        setTimeout(function() {
-          if (tooltip) {
-            tooltip.hide();
-            button.removeAttribute("data-bs-title");
-            button.removeAttribute("data-bs-toggle");
-            button.removeAttribute("data-bs-placement");
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
           }
-          button.setAttribute("title", currentTitle);
-          button.classList.remove('code-copy-button-checked');
-        }, 1000);
-        // clear code selection
-        e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
           for (const childEl of codeEl.children) {
             if (isCodeAnnotation(childEl)) {
               childEl.remove();
             }
           }
           return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
-      });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp("https:\/\/kahowell\.net");
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp("https:\/\/kahowell\.net");
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
             }
           }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-        const config = {
-          allowHTML: true,
-          maxWidth: 500,
-          delay: 100,
-          arrow: false,
-          appendTo: function(el) {
-              return el.closest('section.slide') || el.parentElement;
-          },
-          interactive: true,
-          interactiveBorder: 10,
-          theme: 'light-border',
-          placement: 'bottom-start',
-        };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
-          config['offset'] = [0,0];
-          config['maxWidth'] = 700;
-        window.tippy(el, config); 
-      }
-      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-      for (var i=0; i<noterefs.length; i++) {
-        const ref = noterefs[i];
-        tippyHover(ref, function() {
-          // use id or data attribute instead here
-          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-          try { href = new URL(href).hash; } catch {}
-          const id = href.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
           }
-        });
-      }
-      const findCites = (el) => {
-        const parentEl = el.parentElement;
-        if (parentEl) {
-          const cites = parentEl.dataset.cites;
-          if (cites) {
-            return {
-              el,
-              cites: cites.split(' ')
-            };
-          } else {
-            return findCites(el.parentElement)
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
           }
-        } else {
-          return undefined;
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
         }
-      };
-      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-      for (var i=0; i<bibliorefs.length; i++) {
-        const ref = bibliorefs[i];
-        const citeInfo = findCites(ref);
-        if (citeInfo) {
-          tippyHover(citeInfo.el, function() {
-            var popup = window.document.createElement('div');
-            citeInfo.cites.forEach(function(cite) {
-              var citeDiv = window.document.createElement('div');
-              citeDiv.classList.add('hanging-indent');
-              citeDiv.classList.add('csl-entry');
-              var biblioDiv = window.document.getElementById('ref-' + cite);
-              if (biblioDiv) {
-                citeDiv.innerHTML = biblioDiv.innerHTML;
-              }
-              popup.appendChild(citeDiv);
-            });
-            return popup.innerHTML;
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
           });
         }
-      }
-    });
-    </script>
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
     
 
 </body></html>
