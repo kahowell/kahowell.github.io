@@ -21,11 +21,11 @@
     "text": "Why Open-Source/Open-Weight\n\nEthics/morals\nTransparency/learning\n\nLog Probs\nStructured Output\n\nSovereignty\nPrivacy\n\n\n\nYou might not want to support Big AI.\nSee how it works.\nYou get to own the infrastructure. Change models when you want.\nYou get more control over your data."
   },
   {
-    "objectID": "presentations/2026-10-24_ai_homelab/index.html#huggingface-incident",
-    "href": "presentations/2026-10-24_ai_homelab/index.html#huggingface-incident",
+    "objectID": "presentations/2026-10-24_ai_homelab/index.html#hugging-face-incident",
+    "href": "presentations/2026-10-24_ai_homelab/index.html#hugging-face-incident",
     "title": "Privacy-First AI Learning in Your Own Homelab",
-    "section": "Huggingface Incident",
-    "text": "Huggingface Incident\n\nWhen we started the log analysis, we first used frontier models behind commercial APIs. This did not work.\n\n\nThese requests were blocked by the providers’ safety guardrails.\n\n\nWe ran the forensic analysis instead on zai-org/GLM-5.2, an open-weight model, on our own infrastructure.\n\nHuggingface - Security Incident July 2026\n\n\n\n\n\n\nNote\n\n\nOpenAI later admitted to compromising Hugging Face.\n\n\n\n\nOpenAI later admitted to compromising Hugging Face. Hugging Face didn’t reveal which commercial provider they were using, but this is Big AI attacking someone, and then Big AI refusing to help analyze the attack."
+    "section": "Hugging Face Incident",
+    "text": "Hugging Face Incident\n\nWhen we started the log analysis, we first used frontier models behind commercial APIs. This did not work.\n\n\nThese requests were blocked by the providers’ safety guardrails.\n\n\nWe ran the forensic analysis instead on zai-org/GLM-5.2, an open-weight model, on our own infrastructure.\n\nHugging Face - Security Incident July 2026\n\n\n\n\n\n\nNote\n\n\nOpenAI later admitted to compromising Hugging Face.\n\n\n\n\nOpenAI later admitted to compromising Hugging Face. Hugging Face didn’t reveal which commercial provider they were using, but this is Big AI attacking someone, and then Big AI refusing to help analyze the attack."
   },
   {
     "objectID": "presentations/2026-10-24_ai_homelab/index.html#poll",
