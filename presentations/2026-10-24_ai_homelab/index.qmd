@@ -686,7 +686,7 @@ Comfy is focused on a node-based workflow.
 
 :::
 
-::: {.column width="20%"}
+::: {.column width="19%"}
 
 ![](ai-engineering.webp)
 ![](hands-on-llms.webp)
