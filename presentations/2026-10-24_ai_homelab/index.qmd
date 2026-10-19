@@ -64,7 +64,7 @@ These are my own opinions and experiences; I'm not speaking for my employer.
 
 :::
 
-## Huggingface Incident {.smaller}
+## Hugging Face Incident {.smaller}
 
 > When we started the log analysis, we first used frontier models behind commercial APIs. This did not work.
 
@@ -72,7 +72,7 @@ These are my own opinions and experiences; I'm not speaking for my employer.
 
 > We ran the forensic analysis instead on zai-org/GLM-5.2, an open-weight model, on our own infrastructure.
 
-[Huggingface - Security Incident July 2026](https://huggingface.co/blog/security-incident-july-2026)
+[Hugging Face - Security Incident July 2026](https://huggingface.co/blog/security-incident-july-2026)
 
 ::: {.callout-note}
 [OpenAI later admitted](https://openai.com/index/hugging-face-incident-and-the-road-ahead/) to compromising Hugging Face.
