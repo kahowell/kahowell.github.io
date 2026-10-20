@@ -180,7 +180,7 @@ graph {
 
 >  Inference is the process of using a trained LLM to generate human-like text from a given input prompt.
 
-per [Huggingface](https://huggingface.co/learn/llm-course/chapter1/8)
+per [Hugging Face](https://huggingface.co/learn/llm-course/chapter1/8)
 
 ## Inference Servers
 
