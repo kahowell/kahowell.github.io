@@ -226,7 +226,7 @@ There are other notable inference servers, I've not explored them.
 - Estimates from [unsloth.ai](https://unsloth.ai), for 4-bit quantization
 - CPU: choose XS; GPU: choose XS or S; APU: prefer M if it fits
 - All of these do vision, except for gpt-oss-120b
-- Checkout Mistral models from France
+- Checkout Mistral models from France, Granite models from IBM
 
 :::
 
@@ -399,6 +399,67 @@ Another approach that works well with MLflow is to route traffic through its [AI
 - When you use a commerical service for API, this is essentially what you give them.
 
 :::
+
+## Logprobs {.smaller}
+
+```bash
+curl http://localhost:13305/v1/chat/completions -H "Content-Type: application/json" -d '{
+  "model": "Gemma-4-E2B-it-GGUF",
+  "messages": [{"role": "user", "content": "Answer with a single word only. SeaGL is a "}],
+  "temperature": 0.7,
+  "top_logprobs": 3,
+  "logprobs": true,
+}'
+```
+
+```js
+// specific fields shown for brevity
+// convert values via exponent operation (e.g. numpy's exp function)
+{
+    "top_logprobs": [
+        {
+            "logprob": -0.5212906002998352, // ~59%
+            "token": "Company"
+        },
+        {
+            "logprob": -1.336251139640808,  // ~26%
+            "token": "Technology"
+        },
+        {
+            "logprob": -2.1577308177948,    // ~12%
+            "token": "Brand"
+        }
+    ]
+}
+```
+
+## Structured Output {.smaller}
+
+```bash
+curl http://localhost:13305/v1/chat/completions -H "Content-Type: application/json" -d '{
+  "model": "Gemma-4-E2B-it-GGUF",
+  "messages": [{"role": "user", "content": "SeaGL is "}],
+  "temperature": 0.7,
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "schema": {
+        "type": "string",
+        "enum": ["awesome", "cool", "fun"]
+      }
+    }
+  }
+}'
+```
+```js
+{
+  "choices":[
+    {
+      "message":{"content":"\"awesome\""}
+    }
+  ]
+}
+```
 
 # Agent Frameworks
 
@@ -671,6 +732,24 @@ stablediffusioncpp is an API/CLI. Lemonade server integrates with it.
 Comfy is focused on a node-based workflow.
 
 :::
+
+## stablediffusion.cpp
+
+```bash
+curl -X POST http://localhost:13305/v1/images/generations \
+  -H "Content-Type: application/json" \
+  -d '{
+        "model": "SD-Turbo",
+        "prompt": "A picture of a seagull",
+        "size": "512x512",
+        "steps": 4,
+        "response_format": "b64_json"
+      }'
+```
+
+## ComfyUI
+
+![ComfyUI Interface - source: ComfyUI docs](comfyui-interface.avif)
 
 # Resources
 
