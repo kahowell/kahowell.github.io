@@ -67,7 +67,7 @@
     "href": "presentations/2026-10-24_ai_homelab/index.html#models",
     "title": "Privacy-First AI Learning in Your Own Homelab",
     "section": "Models",
-    "text": "Models\n\n\n\n\n\n\n\n\nSize\nChina\nUnited States\n\n\n\n\nXS\nQwen3.5 0.8B (~4GB)\nGemma 4 E2B (~4GB)\n\n\nS\nQwen3.6 35B-A3B MTP (~24GB)\nGemma 4 26B-A4B (~18GB)\n\n\nM\nQwen3.5 122B-A10B (~70GB)\ngpt-oss-120b (text-only) (~66GB)\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nEstimates from unsloth.ai, for 4-bit quantization\nCPU: choose XS; GPU: choose XS or S; APU: prefer M if it fits\nAll of these do vision, except for gpt-oss-120b\nCheckout Mistral models from France\n\n\n\n\n\n\nAfter you pick an inference server, choose a model\nI recommend not buying new hardware for this, with these ram prices\nCPU, GPU, APU, but generally, try it if it fits\nnot going into distributed inference, but if you have more than one machine go for it.\nexpect OOMKills or even system lock-ups if you get too close to limits"
+    "text": "Models\n\n\n\n\n\n\n\n\nSize\nChina\nUnited States\n\n\n\n\nXS\nQwen3.5 0.8B (~4GB)\nGemma 4 E2B (~4GB)\n\n\nS\nQwen3.6 35B-A3B MTP (~24GB)\nGemma 4 26B-A4B (~18GB)\n\n\nM\nQwen3.5 122B-A10B (~70GB)\ngpt-oss-120b (text-only) (~66GB)\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nEstimates from unsloth.ai, for 4-bit quantization\nCPU: choose XS; GPU: choose XS or S; APU: prefer M if it fits\nAll of these do vision, except for gpt-oss-120b\nCheckout Mistral models from France, Granite models from IBM\n\n\n\n\n\n\nAfter you pick an inference server, choose a model\nI recommend not buying new hardware for this, with these ram prices\nCPU, GPU, APU, but generally, try it if it fits\nnot going into distributed inference, but if you have more than one machine go for it.\nexpect OOMKills or even system lock-ups if you get too close to limits"
   },
   {
     "objectID": "presentations/2026-10-24_ai_homelab/index.html#vram",
@@ -103,6 +103,20 @@
     "title": "Privacy-First AI Learning in Your Own Homelab",
     "section": "Example Trace",
     "text": "Example Trace\n\n\n\nYou get a record of the performance of a particular LLM invocation\nsome interesting details that you might have to dig for otherwise, like the system prompt.\nif you’re paying attention, this trace is from the same prompt in OpenCode, but it’s different there because there’s a long system prompt too.\nNOTE: traces contain sensitive info, like chat logs.\nWhen you use a commerical service for API, this is essentially what you give them."
+  },
+  {
+    "objectID": "presentations/2026-10-24_ai_homelab/index.html#logprobs",
+    "href": "presentations/2026-10-24_ai_homelab/index.html#logprobs",
+    "title": "Privacy-First AI Learning in Your Own Homelab",
+    "section": "Logprobs",
+    "text": "Logprobs\ncurl http://localhost:13305/v1/chat/completions -H \"Content-Type: application/json\" -d '{\n  \"model\": \"Gemma-4-E2B-it-GGUF\",\n  \"messages\": [{\"role\": \"user\", \"content\": \"Answer with a single word only. SeaGL is a \"}],\n  \"temperature\": 0.7,\n  \"top_logprobs\": 3,\n  \"logprobs\": true,\n}'\n// specific fields shown for brevity\n// convert values via exponent operation (e.g. numpy's exp function)\n{\n    \"top_logprobs\": [\n        {\n            \"logprob\": -0.5212906002998352, // ~59%\n            \"token\": \"Company\"\n        },\n        {\n            \"logprob\": -1.336251139640808,  // ~26%\n            \"token\": \"Technology\"\n        },\n        {\n            \"logprob\": -2.1577308177948,    // ~12%\n            \"token\": \"Brand\"\n        }\n    ]\n}"
+  },
+  {
+    "objectID": "presentations/2026-10-24_ai_homelab/index.html#structured-output",
+    "href": "presentations/2026-10-24_ai_homelab/index.html#structured-output",
+    "title": "Privacy-First AI Learning in Your Own Homelab",
+    "section": "Structured Output",
+    "text": "Structured Output\ncurl http://localhost:13305/v1/chat/completions -H \"Content-Type: application/json\" -d '{\n  \"model\": \"Gemma-4-E2B-it-GGUF\",\n  \"messages\": [{\"role\": \"user\", \"content\": \"SeaGL is \"}],\n  \"temperature\": 0.7,\n  \"response_format\": {\n    \"type\": \"json_schema\",\n    \"json_schema\": {\n      \"schema\": {\n        \"type\": \"string\",\n        \"enum\": [\"awesome\", \"cool\", \"fun\"]\n      }\n    }\n  }\n}'\n{\n  \"choices\":[\n    {\n      \"message\":{\"content\":\"\\\"awesome\\\"\"}\n    }\n  ]\n}"
   },
   {
     "objectID": "presentations/2026-10-24_ai_homelab/index.html#chat-uis",
@@ -166,6 +180,20 @@
     "title": "Privacy-First AI Learning in Your Own Homelab",
     "section": "Image Generation - Servers",
     "text": "Image Generation - Servers\n\n\n\nstablediffusion.cpp (github.com/leejet/stable-diffusion.cpp)\nComfyUI (comfy.org)\n\n\n \n\n\nstablediffusioncpp is an API/CLI. Lemonade server integrates with it.\nComfy is focused on a node-based workflow."
+  },
+  {
+    "objectID": "presentations/2026-10-24_ai_homelab/index.html#stablediffusion.cpp",
+    "href": "presentations/2026-10-24_ai_homelab/index.html#stablediffusion.cpp",
+    "title": "Privacy-First AI Learning in Your Own Homelab",
+    "section": "stablediffusion.cpp",
+    "text": "stablediffusion.cpp\ncurl -X POST http://localhost:13305/v1/images/generations \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n        \"model\": \"SD-Turbo\",\n        \"prompt\": \"A picture of a seagull\",\n        \"size\": \"512x512\",\n        \"steps\": 4,\n        \"response_format\": \"b64_json\"\n      }'"
+  },
+  {
+    "objectID": "presentations/2026-10-24_ai_homelab/index.html#comfyui",
+    "href": "presentations/2026-10-24_ai_homelab/index.html#comfyui",
+    "title": "Privacy-First AI Learning in Your Own Homelab",
+    "section": "ComfyUI",
+    "text": "ComfyUI\n\nComfyUI Interface - source: ComfyUI docs"
   },
   {
     "objectID": "presentations/2024-03-16_ansible_chezmoi/ansible_chezmoi.html#agenda",

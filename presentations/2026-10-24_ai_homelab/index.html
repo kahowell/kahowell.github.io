@@ -545,7 +545,7 @@ Kevin Howell
 <li>Estimates from <a href="https://unsloth.ai">unsloth.ai</a>, for 4-bit quantization</li>
 <li>CPU: choose XS; GPU: choose XS or S; APU: prefer M if it fits</li>
 <li>All of these do vision, except for gpt-oss-120b</li>
-<li>Checkout Mistral models from France</li>
+<li>Checkout Mistral models from France, Granite models from IBM</li>
 </ul>
 </div>
 </div>
@@ -818,6 +818,58 @@ Kevin Howell
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
+</section>
+<section id="logprobs" class="slide level2 smaller">
+<h2>Logprobs</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> http://localhost:13305/v1/chat/completions <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="at">-d</span> <span class="st">'{</span></span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "model": "Gemma-4-E2B-it-GGUF",</span></span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "messages": [{"role": "user", "content": "Answer with a single word only. SeaGL is a "}],</span></span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "temperature": 0.7,</span></span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "top_logprobs": 3,</span></span>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "logprobs": true,</span></span>
+<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a><span class="st">}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="co">// specific fields shown for brevity</span></span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a><span class="co">// convert values via exponent operation (e.g. numpy's exp function)</span></span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"top_logprobs"</span><span class="op">:</span> [</span>
+<span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb4-6"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"logprob"</span><span class="op">:</span> <span class="op">-</span><span class="fl">0.5212906002998352</span><span class="op">,</span> <span class="co">// ~59%</span></span>
+<span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"token"</span><span class="op">:</span> <span class="st">"Company"</span></span>
+<span id="cb4-8"><a aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb4-9"><a aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb4-10"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"logprob"</span><span class="op">:</span> <span class="op">-</span><span class="fl">1.336251139640808</span><span class="op">,</span>  <span class="co">// ~26%</span></span>
+<span id="cb4-11"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"token"</span><span class="op">:</span> <span class="st">"Technology"</span></span>
+<span id="cb4-12"><a aria-hidden="true" tabindex="-1"></a>        }<span class="op">,</span></span>
+<span id="cb4-13"><a aria-hidden="true" tabindex="-1"></a>        {</span>
+<span id="cb4-14"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"logprob"</span><span class="op">:</span> <span class="op">-</span><span class="fl">2.1577308177948</span><span class="op">,</span>    <span class="co">// ~12%</span></span>
+<span id="cb4-15"><a aria-hidden="true" tabindex="-1"></a>            <span class="st">"token"</span><span class="op">:</span> <span class="st">"Brand"</span></span>
+<span id="cb4-16"><a aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-17"><a aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb4-18"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="structured-output" class="slide level2 smaller">
+<h2>Structured Output</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> http://localhost:13305/v1/chat/completions <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="at">-d</span> <span class="st">'{</span></span>
+<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "model": "Gemma-4-E2B-it-GGUF",</span></span>
+<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "messages": [{"role": "user", "content": "SeaGL is "}],</span></span>
+<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "temperature": 0.7,</span></span>
+<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "response_format": {</span></span>
+<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a><span class="st">    "type": "json_schema",</span></span>
+<span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a><span class="st">    "json_schema": {</span></span>
+<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a><span class="st">      "schema": {</span></span>
+<span id="cb5-9"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "type": "string",</span></span>
+<span id="cb5-10"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "enum": ["awesome", "cool", "fun"]</span></span>
+<span id="cb5-11"><a aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb5-12"><a aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb5-13"><a aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb5-14"><a aria-hidden="true" tabindex="-1"></a><span class="st">}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="st">"choices"</span><span class="op">:</span>[</span>
+<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a>      <span class="st">"message"</span><span class="op">:</span>{<span class="st">"content"</span><span class="op">:</span><span class="st">"</span><span class="sc">\"</span><span class="st">awesome</span><span class="sc">\"</span><span class="st">"</span>}</span>
+<span id="cb6-5"><a aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb6-6"><a aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb6-7"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section>
 <section id="agent-frameworks" class="title-slide slide level1 center">
@@ -959,15 +1011,15 @@ Kevin Howell
 </section>
 <section id="openshell---local-inference-setup" class="slide level2">
 <h2>OpenShell - Local Inference Setup</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">openshell</span> provider create <span class="dt">\</span></span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--type</span> openai <span class="dt">\</span></span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--name</span> lemonade <span class="dt">\</span></span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--credential</span> OPENAI_API_KEY=<span class="st">'none'</span> <span class="dt">\</span></span>
-<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--config</span> OPENAI_BASE_URL=http://localhost:13305/v1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">openshell</span> inference set <span class="dt">\</span></span>
-<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--provider</span> lemonade <span class="dt">\</span></span>
-<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--model</span> Qwen3.6-35B-A3B-MTP-GGUF <span class="dt">\</span></span>
-<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--timeout</span> 3600</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">openshell</span> provider create <span class="dt">\</span></span>
+<span id="cb7-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--type</span> openai <span class="dt">\</span></span>
+<span id="cb7-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--name</span> lemonade <span class="dt">\</span></span>
+<span id="cb7-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--credential</span> OPENAI_API_KEY=<span class="st">'none'</span> <span class="dt">\</span></span>
+<span id="cb7-5"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--config</span> OPENAI_BASE_URL=http://localhost:13305/v1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">openshell</span> inference set <span class="dt">\</span></span>
+<span id="cb8-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--provider</span> lemonade <span class="dt">\</span></span>
+<span id="cb8-3"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--model</span> Qwen3.6-35B-A3B-MTP-GGUF <span class="dt">\</span></span>
+<span id="cb8-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--timeout</span> 3600</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1000,32 +1052,32 @@ Kevin Howell
 </section>
 <section id="openshell---opencode-config" class="slide level2 smaller">
 <h2>OpenShell - OpenCode Config</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENCODE_CONFIG_CONTENT</span><span class="op">=</span><span class="st">'{</span></span>
-<span id="cb5-2"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "$schema": "https://opencode.ai/config.json",</span></span>
-<span id="cb5-3"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "model": "local/local",</span></span>
-<span id="cb5-4"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "provider": {</span></span>
-<span id="cb5-5"><a aria-hidden="true" tabindex="-1"></a><span class="st">    "local": {</span></span>
-<span id="cb5-6"><a aria-hidden="true" tabindex="-1"></a><span class="st">      "npm": "@ai-sdk/openai-compatible",</span></span>
-<span id="cb5-7"><a aria-hidden="true" tabindex="-1"></a><span class="st">      "options": {</span></span>
-<span id="cb5-8"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "baseURL": "https://inference.local/v1",</span></span>
-<span id="cb5-9"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "apiKey": "none"</span></span>
-<span id="cb5-10"><a aria-hidden="true" tabindex="-1"></a><span class="st">      },</span></span>
-<span id="cb5-11"><a aria-hidden="true" tabindex="-1"></a><span class="st">      "models": {</span></span>
-<span id="cb5-12"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "local": {</span></span>
-<span id="cb5-13"><a aria-hidden="true" tabindex="-1"></a><span class="st">          "name": "local",</span></span>
-<span id="cb5-14"><a aria-hidden="true" tabindex="-1"></a><span class="st">          "modelID": "local"</span></span>
-<span id="cb5-15"><a aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
-<span id="cb5-16"><a aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
-<span id="cb5-17"><a aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
-<span id="cb5-18"><a aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb5-19"><a aria-hidden="true" tabindex="-1"></a><span class="st">}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">OPENCODE_CONFIG_CONTENT</span><span class="op">=</span><span class="st">'{</span></span>
+<span id="cb9-2"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "$schema": "https://opencode.ai/config.json",</span></span>
+<span id="cb9-3"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "model": "local/local",</span></span>
+<span id="cb9-4"><a aria-hidden="true" tabindex="-1"></a><span class="st">  "provider": {</span></span>
+<span id="cb9-5"><a aria-hidden="true" tabindex="-1"></a><span class="st">    "local": {</span></span>
+<span id="cb9-6"><a aria-hidden="true" tabindex="-1"></a><span class="st">      "npm": "@ai-sdk/openai-compatible",</span></span>
+<span id="cb9-7"><a aria-hidden="true" tabindex="-1"></a><span class="st">      "options": {</span></span>
+<span id="cb9-8"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "baseURL": "https://inference.local/v1",</span></span>
+<span id="cb9-9"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "apiKey": "none"</span></span>
+<span id="cb9-10"><a aria-hidden="true" tabindex="-1"></a><span class="st">      },</span></span>
+<span id="cb9-11"><a aria-hidden="true" tabindex="-1"></a><span class="st">      "models": {</span></span>
+<span id="cb9-12"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "local": {</span></span>
+<span id="cb9-13"><a aria-hidden="true" tabindex="-1"></a><span class="st">          "name": "local",</span></span>
+<span id="cb9-14"><a aria-hidden="true" tabindex="-1"></a><span class="st">          "modelID": "local"</span></span>
+<span id="cb9-15"><a aria-hidden="true" tabindex="-1"></a><span class="st">        }</span></span>
+<span id="cb9-16"><a aria-hidden="true" tabindex="-1"></a><span class="st">      }</span></span>
+<span id="cb9-17"><a aria-hidden="true" tabindex="-1"></a><span class="st">    }</span></span>
+<span id="cb9-18"><a aria-hidden="true" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb9-19"><a aria-hidden="true" tabindex="-1"></a><span class="st">}'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="openshell---opencode-sandbox" class="slide level2">
 <h2>OpenShell - OpenCode Sandbox</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">openshell</span> sandbox create <span class="dt">\</span></span>
-<span id="cb6-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--provider</span> lemonade <span class="at">--</span> <span class="dt">\</span></span>
-<span id="cb6-3"><a aria-hidden="true" tabindex="-1"></a>    bash <span class="at">-c</span> <span class="dt">\</span></span>
-<span id="cb6-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"OPENCODE_CONFIG_CONTENT='</span><span class="va">$OPENCODE_CONFIG_CONTENT</span><span class="st">' opencode"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">openshell</span> sandbox create <span class="dt">\</span></span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>    <span class="at">--provider</span> lemonade <span class="at">--</span> <span class="dt">\</span></span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>    bash <span class="at">-c</span> <span class="dt">\</span></span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a>    <span class="st">"OPENCODE_CONFIG_CONTENT='</span><span class="va">$OPENCODE_CONFIG_CONTENT</span><span class="st">' opencode"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
 <ul>
 <li><p>If you followed all that, you’ll get sandboxed opencode running on local inference.</p></li>
@@ -1143,7 +1195,23 @@ Kevin Howell
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section></section>
+</section>
+<section id="stablediffusion.cpp" class="slide level2">
+<h2>stablediffusion.cpp</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> POST http://localhost:13305/v1/images/generations <span class="dt">\</span></span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">"Content-Type: application/json"</span> <span class="dt">\</span></span>
+<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">'{</span></span>
+<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "model": "SD-Turbo",</span></span>
+<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "prompt": "A picture of a seagull",</span></span>
+<span id="cb11-6"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "size": "512x512",</span></span>
+<span id="cb11-7"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "steps": 4,</span></span>
+<span id="cb11-8"><a aria-hidden="true" tabindex="-1"></a><span class="st">        "response_format": "b64_json"</span></span>
+<span id="cb11-9"><a aria-hidden="true" tabindex="-1"></a><span class="st">      }'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="comfyui" class="slide level2">
+<h2>ComfyUI</h2>
+
+<img data-src="comfyui-interface.avif" class="r-stretch quarto-figure-center"><p class="caption">ComfyUI Interface - source: ComfyUI docs</p></section></section>
 <section id="resources" class="title-slide slide level1 center">
 <h1>Resources</h1>
 <div class="columns">
